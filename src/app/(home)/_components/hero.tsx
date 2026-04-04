@@ -45,8 +45,10 @@ const Hero = () => (
       {/* Main content area - spans full width on top */}
       <div className="col-span-full overflow-hidden border-b border-dashed border-border !p-0 text-center">
         <div className="px-12 pt-16">
-          <h1 className="text-balance text-4xl font-semibold md:text-5xl lg:text-6xl">
-            Automate Any Workflow with AI
+          <h1 className="text-5xl font-semibold md:text-6xl lg:text-7xl leading-[1.1]">
+            Automate Any Workflow
+            <br />
+            <span className="text-primary">with AI</span>
           </h1>
           <p className="text-muted-foreground mx-auto mb-8 mt-6 max-w-md text-balance text-lg">
             Connect your tools, design intelligent workflows, and let AI handle the rest. From simple tasks to complex processes, Vertex makes automation effortless.
