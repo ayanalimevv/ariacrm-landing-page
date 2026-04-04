@@ -1,12 +1,28 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Icons } from '@/components/icons/icons';
 
-// Video testimonial data
-const videoTestimonials = [
+// Combined testimonials data with type
+type TestimonialType = 'video' | 'text' | 'featured';
+
+interface Testimonial {
+  type: TestimonialType;
+  video?: string;
+  quote: string;
+  author: {
+    name: string;
+    role: string;
+    company: string;
+    image: string;
+  };
+  size?: 'sm' | 'md' | 'lg';
+}
+
+const testimonials: Testimonial[] = [
   {
+    type: 'video',
     video: '/videos/testimonial-01.mp4',
     quote: 'We automated our entire customer onboarding flow in an afternoon. What took our team hours now happens instantly.',
     author: {
@@ -15,8 +31,32 @@ const videoTestimonials = [
       company: 'Acme Inc',
       image: 'https://github.com/haydenbleasel.png',
     },
+    size: 'lg',
   },
   {
+    type: 'text',
+    quote: 'The AI understands context perfectly. Our support ticket routing is now 95% accurate without any manual rules.',
+    author: {
+      name: 'Emily Watson',
+      role: 'Support Lead',
+      company: 'HelpDesk Pro',
+      image: 'https://github.com/pontusab.png',
+    },
+    size: 'sm',
+  },
+  {
+    type: 'featured',
+    quote: 'Vertex replaced 5 different automation tools for us. One platform handles everything from data sync to AI-powered document processing. The ROI was immediate.',
+    author: {
+      name: 'Michael Foster',
+      role: 'VP of Engineering',
+      company: 'Dropbox',
+      image: 'https://github.com/rauchg.png',
+    },
+    size: 'md',
+  },
+  {
+    type: 'video',
     video: '/videos/testimonial-02.mp4',
     quote: 'Our sales team saves 15+ hours per week. Lead enrichment, CRM updates, follow-up emails - all automated.',
     author: {
@@ -25,31 +65,10 @@ const videoTestimonials = [
       company: 'TechFlow',
       image: 'https://github.com/leerob.png',
     },
+    size: 'md',
   },
   {
-    video: '/videos/testimonial-03.mp4',
-    quote: 'Built our first workflow in 30 minutes. No code, just drag-and-drop. The AI steps are incredibly powerful.',
-    author: {
-      name: 'Alex Kim',
-      role: 'CTO',
-      company: 'StartupXYZ',
-      image: 'https://github.com/shadcn.png',
-    },
-  },
-];
-
-// Text testimonials
-const textTestimonials = [
-  {
-    quote: 'The AI understands context perfectly. Our support ticket routing is now 95% accurate without any manual rules.',
-    author: {
-      name: 'Emily Watson',
-      role: 'Support Lead',
-      company: 'HelpDesk Pro',
-      image: 'https://github.com/pontusab.png',
-    },
-  },
-  {
+    type: 'text',
     quote: 'Connected all our tools in one place. Slack, Notion, Salesforce - data flows automatically between everything.',
     author: {
       name: 'David Park',
@@ -57,33 +76,73 @@ const textTestimonials = [
       company: 'CloudScale',
       image: 'https://github.com/shuding.png',
     },
+    size: 'sm',
   },
   {
+    type: 'text',
     quote: 'Real-time analytics show exactly where workflows succeed or fail. We optimize continuously based on actual data.',
     author: {
       name: 'Rachel Torres',
       role: 'Data Analyst',
       company: 'DataFlow',
-      image: 'https://github.com/rauchg.png',
+      image: 'https://github.com/shadcn.png',
     },
+    size: 'md',
+  },
+  {
+    type: 'video',
+    video: '/videos/testimonial-03.mp4',
+    quote: 'Built our first workflow in 30 minutes. No code, just drag-and-drop. The AI steps are incredibly powerful.',
+    author: {
+      name: 'Alex Kim',
+      role: 'CTO',
+      company: 'StartupXYZ',
+      image: 'https://github.com/adamwathan.png',
+    },
+    size: 'lg',
+  },
+  {
+    type: 'featured',
+    quote: 'We went from spending 40 hours a week on manual data entry to zero. The AI handles everything with 99% accuracy.',
+    author: {
+      name: 'Jennifer Liu',
+      role: 'Operations Director',
+      company: 'Stripe',
+      image: 'https://github.com/vercel.png',
+    },
+    size: 'md',
+  },
+  {
+    type: 'text',
+    quote: 'Implementation took 2 days instead of the 2 months we expected. The pre-built integrations saved us countless hours.',
+    author: {
+      name: 'Thomas Wright',
+      role: 'IT Director',
+      company: 'Notion',
+      image: 'https://github.com/timneutkens.png',
+    },
+    size: 'sm',
   },
 ];
 
 // Video Testimonial Card Component
-function VideoTestimonialCard({
-  video,
-  quote,
-  author,
-  isLarge = false,
-}: {
-  video: string;
-  quote: string;
-  author: { name: string; role: string; company: string; image: string };
-  isLarge?: boolean;
-}) {
+function VideoCard({ testimonial }: { testimonial: Testimonial }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const updateProgress = () => {
+      setProgress((video.currentTime / video.duration) * 100);
+    };
+
+    video.addEventListener('timeupdate', updateProgress);
+    return () => video.removeEventListener('timeupdate', updateProgress);
+  }, []);
 
   const handlePlayPause = () => {
     if (videoRef.current) {
@@ -98,27 +157,29 @@ function VideoTestimonialCard({
 
   const handleVideoEnd = () => {
     setIsPlaying(false);
+    setProgress(0);
   };
+
+  const heightClass = testimonial.size === 'lg' ? 'h-[480px]' : 'h-[380px]';
 
   return (
     <div
-      className={`group relative overflow-hidden bg-muted/30 ${isLarge ? 'aspect-[4/5] sm:aspect-[3/4]' : 'aspect-[4/5]'}`}
+      className={`group relative overflow-hidden rounded-2xl bg-neutral-900 ${heightClass}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Video */}
       <video
         ref={videoRef}
-        src={video}
+        src={testimonial.video}
         className="absolute inset-0 h-full w-full object-cover"
         playsInline
         muted
-        loop={false}
         onEnded={handleVideoEnd}
       />
 
       {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-black/10" />
 
       {/* Play Button */}
       <button
@@ -128,84 +189,105 @@ function VideoTestimonialCard({
         }`}
         aria-label={isPlaying ? 'Pause video' : 'Play video'}
       >
-        <div className={`flex h-16 w-16 items-center justify-center rounded-full bg-white/95 shadow-2xl backdrop-blur-sm transition-all duration-300 ${
-          isHovered ? 'scale-110' : 'scale-100'
-        } ${isPlaying ? 'bg-white/80' : ''}`}>
+        <div
+          className={`flex h-14 w-14 items-center justify-center rounded-full bg-white shadow-2xl transition-all duration-300 ${
+            isHovered ? 'scale-110' : 'scale-100'
+          }`}
+        >
           {isPlaying ? (
-            <Icons.pause className="h-6 w-6 text-foreground ml-0" />
+            <Icons.pause className="h-5 w-5 text-neutral-900" />
           ) : (
-            <Icons.play className="h-6 w-6 text-foreground ml-1" />
+            <Icons.play className="h-5 w-5 text-neutral-900 ml-0.5" />
           )}
         </div>
       </button>
 
       {/* Content Overlay */}
-      <div className={`absolute inset-x-0 bottom-0 p-5 sm:p-6 transition-transform duration-300 ${
-        isPlaying && !isHovered ? 'translate-y-full' : 'translate-y-0'
-      }`}>
-        {/* Quote */}
-        <blockquote className={`text-white/95 leading-relaxed mb-4 ${
-          isLarge ? 'text-sm sm:text-base' : 'text-xs sm:text-sm'
-        }`}>
-          &ldquo;{quote}&rdquo;
+      <div
+        className={`absolute inset-x-0 bottom-0 p-6 transition-all duration-300 ${
+          isPlaying && !isHovered ? 'translate-y-4 opacity-0' : 'translate-y-0 opacity-100'
+        }`}
+      >
+        <blockquote className="text-sm text-white/90 leading-relaxed mb-4 line-clamp-3">
+          &ldquo;{testimonial.quote}&rdquo;
         </blockquote>
 
-        {/* Author */}
         <div className="flex items-center gap-3">
-          <Avatar className="h-10 w-10 border-2 border-white/20">
-            <AvatarImage src={author.image} alt={author.name} />
-            <AvatarFallback className="bg-white/20 text-white">
-              {author.name.charAt(0)}
+          <Avatar className="h-9 w-9 ring-2 ring-white/20">
+            <AvatarImage src={testimonial.author.image} alt={testimonial.author.name} />
+            <AvatarFallback className="bg-white/20 text-white text-xs">
+              {testimonial.author.name.charAt(0)}
             </AvatarFallback>
           </Avatar>
           <div>
-            <p className="text-sm font-medium text-white">{author.name}</p>
-            <p className="text-xs text-white/70">
-              {author.role}, {author.company}
+            <p className="text-sm font-medium text-white">{testimonial.author.name}</p>
+            <p className="text-xs text-white/60">
+              {testimonial.author.role}, {testimonial.author.company}
             </p>
           </div>
         </div>
       </div>
 
-      {/* Video Progress Bar */}
-      {isPlaying && (
-        <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/20">
-          <div
-            className="h-full bg-primary transition-all duration-100"
-            style={{
-              width: videoRef.current
-                ? `${(videoRef.current.currentTime / videoRef.current.duration) * 100}%`
-                : '0%'
-            }}
-          />
-        </div>
-      )}
+      {/* Progress Bar */}
+      <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/10">
+        <div
+          className="h-full bg-white transition-all duration-150 ease-linear"
+          style={{ width: `${progress}%` }}
+        />
+      </div>
     </div>
   );
 }
 
 // Text Testimonial Card Component
-function TextTestimonialCard({
-  quote,
-  author,
-}: {
-  quote: string;
-  author: { name: string; role: string; company: string; image: string };
-}) {
+function TextCard({ testimonial }: { testimonial: Testimonial }) {
+  const isFeatured = testimonial.type === 'featured';
+
   return (
-    <div className="flex flex-col justify-between p-6 sm:p-8 h-full bg-background">
-      <blockquote className="text-sm sm:text-base text-foreground leading-relaxed">
-        &ldquo;{quote}&rdquo;
+    <div
+      className={`flex flex-col justify-between rounded-2xl p-6 ${
+        isFeatured
+          ? 'bg-primary text-primary-foreground'
+          : 'bg-muted/50 border border-border'
+      }`}
+    >
+      {isFeatured && (
+        <div className="mb-4 flex items-center gap-2">
+          <div className="flex">
+            {[...Array(5)].map((_, i) => (
+              <svg
+                key={i}
+                className="h-4 w-4 fill-current"
+                viewBox="0 0 20 20"
+              >
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <blockquote
+        className={`text-sm leading-relaxed ${
+          isFeatured ? 'text-primary-foreground' : 'text-foreground'
+        } ${testimonial.size === 'md' ? 'text-base' : ''}`}
+      >
+        &ldquo;{testimonial.quote}&rdquo;
       </blockquote>
+
       <div className="mt-6 flex items-center gap-3">
-        <Avatar className="h-10 w-10 border border-border">
-          <AvatarImage src={author.image} alt={author.name} />
-          <AvatarFallback>{author.name.charAt(0)}</AvatarFallback>
+        <Avatar className={`h-9 w-9 ${isFeatured ? 'ring-2 ring-primary-foreground/20' : 'border border-border'}`}>
+          <AvatarImage src={testimonial.author.image} alt={testimonial.author.name} />
+          <AvatarFallback className={isFeatured ? 'bg-primary-foreground/20 text-primary-foreground' : ''}>
+            {testimonial.author.name.charAt(0)}
+          </AvatarFallback>
         </Avatar>
         <div>
-          <p className="text-sm font-medium text-foreground">{author.name}</p>
-          <p className="text-xs text-muted-foreground">
-            {author.role}, {author.company}
+          <p className={`text-sm font-medium ${isFeatured ? 'text-primary-foreground' : 'text-foreground'}`}>
+            {testimonial.author.name}
+          </p>
+          <p className={`text-xs ${isFeatured ? 'text-primary-foreground/70' : 'text-muted-foreground'}`}>
+            {testimonial.author.role}, {testimonial.author.company}
           </p>
         </div>
       </div>
@@ -213,60 +295,42 @@ function TextTestimonialCard({
   );
 }
 
+// Testimonial Card Router
+function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
+  if (testimonial.type === 'video') {
+    return <VideoCard testimonial={testimonial} />;
+  }
+  return <TextCard testimonial={testimonial} />;
+}
+
 const Testimonials = () => {
   return (
     <section className="bg-background">
-      {/* Top border */}
       <div className="border-t border-dashed border-border" />
 
-      <div>
-        {/* Header */}
-        <div className="border-b border-dashed border-border px-6 pb-8 md:px-12 md:pb-12 pt-16">
-          <h2 className="text-xl font-medium sm:text-2xl md:text-3xl lg:text-4xl text-foreground">
-            Hear from teams{' '}
-            <span className="text-muted-foreground">
-              automating smarter.
-            </span>
-          </h2>
-          <p className="mt-4 max-w-2xl text-muted-foreground">
-            Thousands of companies trust Vertex to automate their workflows,
-            connect their tools, and let AI handle the repetitive work.
-          </p>
-        </div>
+      {/* Header */}
+      <div className="border-b border-dashed border-border px-6 pb-8 md:px-12 md:pb-12 pt-16">
+        <h2 className="text-xl font-medium sm:text-2xl md:text-3xl lg:text-4xl text-foreground">
+          Hear from teams{' '}
+          <span className="text-muted-foreground">automating smarter.</span>
+        </h2>
+        <p className="mt-4 max-w-2xl text-muted-foreground">
+          Thousands of companies trust Vertex to automate their workflows,
+          connect their tools, and let AI handle the repetitive work.
+        </p>
+      </div>
 
-        {/* Video Testimonials - Featured Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 border-b border-dashed border-border">
-          {videoTestimonials.map((testimonial, index) => (
-            <div
-              key={index}
-              className={`border-border ${
-                index < videoTestimonials.length - 1 ? 'border-r-0 sm:border-r border-dashed' : ''
-              } ${index === 0 ? 'sm:col-span-2 lg:col-span-1' : ''}`}
-            >
-              <VideoTestimonialCard
-                video={testimonial.video}
-                quote={testimonial.quote}
-                author={testimonial.author}
-                isLarge={index === 0}
-              />
-            </div>
-          ))}
-        </div>
-
-        {/* Text Testimonials Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 divide-dashed divide-border divide-y sm:divide-y-0 sm:divide-x">
-          {textTestimonials.map((testimonial, index) => (
-            <div key={index} className="min-h-[200px]">
-              <TextTestimonialCard
-                quote={testimonial.quote}
-                author={testimonial.author}
-              />
+      {/* Masonry Grid */}
+      <div className="px-6 py-12 md:px-12 md:py-16">
+        <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
+          {testimonials.map((testimonial, index) => (
+            <div key={index} className="break-inside-avoid">
+              <TestimonialCard testimonial={testimonial} />
             </div>
           ))}
         </div>
       </div>
 
-      {/* Bottom border */}
       <div className="border-t border-dashed border-border" />
     </section>
   );
