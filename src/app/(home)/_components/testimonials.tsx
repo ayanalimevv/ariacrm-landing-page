@@ -4,7 +4,6 @@ import { useRef, useState, useEffect } from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Icons } from '@/components/icons/icons';
 
-// Testimonial types
 type TestimonialType = 'video' | 'text' | 'featured';
 
 interface Testimonial {
@@ -19,7 +18,6 @@ interface Testimonial {
   };
 }
 
-// Testimonials data - organized for masonry flow
 const testimonials: Testimonial[] = [
   {
     type: 'video',
@@ -146,7 +144,7 @@ const testimonials: Testimonial[] = [
   },
 ];
 
-// Video Testimonial Card Component
+// Video Card - Theme adaptive, NO black
 function VideoCard({ testimonial }: { testimonial: Testimonial }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -156,11 +154,7 @@ function VideoCard({ testimonial }: { testimonial: Testimonial }) {
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
-
-    const updateProgress = () => {
-      setProgress((video.currentTime / video.duration) * 100);
-    };
-
+    const updateProgress = () => setProgress((video.currentTime / video.duration) * 100);
     video.addEventListener('timeupdate', updateProgress);
     return () => video.removeEventListener('timeupdate', updateProgress);
   }, []);
@@ -179,18 +173,15 @@ function VideoCard({ testimonial }: { testimonial: Testimonial }) {
   const handleVideoEnd = () => {
     setIsPlaying(false);
     setProgress(0);
-    if (videoRef.current) {
-      videoRef.current.currentTime = 0;
-    }
+    if (videoRef.current) videoRef.current.currentTime = 0;
   };
 
   return (
     <div
-      className="relative overflow-hidden bg-muted dark:bg-neutral-900 border border-border aspect-[3/4]"
+      className="relative overflow-hidden bg-muted border-b border-r border-border aspect-[3/4]"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Video */}
       <video
         ref={videoRef}
         src={testimonial.video}
@@ -201,8 +192,8 @@ function VideoCard({ testimonial }: { testimonial: Testimonial }) {
         onEnded={handleVideoEnd}
       />
 
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-white via-white/50 to-transparent dark:from-black dark:via-black/40 dark:to-transparent" />
+      {/* Theme-adaptive gradient - uses background color */}
+      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
 
       {/* Play Button */}
       <button
@@ -212,11 +203,7 @@ function VideoCard({ testimonial }: { testimonial: Testimonial }) {
         }`}
         aria-label={isPlaying ? 'Pause video' : 'Play video'}
       >
-        <div
-          className={`flex h-12 w-12 items-center justify-center bg-foreground transition-transform duration-300 ${
-            isHovered ? 'scale-110' : 'scale-100'
-          }`}
-        >
+        <div className={`flex h-12 w-12 items-center justify-center bg-foreground transition-transform duration-300 ${isHovered ? 'scale-110' : 'scale-100'}`}>
           {isPlaying ? (
             <Icons.pause className="h-4 w-4 text-background" />
           ) : (
@@ -226,54 +213,37 @@ function VideoCard({ testimonial }: { testimonial: Testimonial }) {
       </button>
 
       {/* Content */}
-      <div
-        className={`absolute inset-x-0 bottom-0 p-5 transition-all duration-300 ${
-          isPlaying && !isHovered ? 'translate-y-2 opacity-0' : 'translate-y-0 opacity-100'
-        }`}
-      >
-        <blockquote className="text-sm text-foreground dark:text-white leading-relaxed mb-4">
+      <div className={`absolute inset-x-0 bottom-0 p-5 transition-all duration-300 ${isPlaying && !isHovered ? 'translate-y-2 opacity-0' : 'translate-y-0 opacity-100'}`}>
+        <blockquote className="text-sm text-foreground leading-relaxed mb-4">
           &ldquo;{testimonial.quote}&rdquo;
         </blockquote>
-
         <div className="flex items-center gap-3">
-          <Avatar className="h-8 w-8 border border-border dark:border-white/20 rounded-none">
+          <Avatar className="h-8 w-8 border border-border rounded-none">
             <AvatarImage src={testimonial.author.image} alt={testimonial.author.name} className="rounded-none" />
-            <AvatarFallback className="rounded-none text-xs">
-              {testimonial.author.name.charAt(0)}
-            </AvatarFallback>
+            <AvatarFallback className="rounded-none text-xs">{testimonial.author.name.charAt(0)}</AvatarFallback>
           </Avatar>
           <div>
-            <p className="text-sm font-medium text-foreground dark:text-white">{testimonial.author.name}</p>
-            <p className="text-xs text-muted-foreground dark:text-white/60">
-              {testimonial.author.role}, {testimonial.author.company}
-            </p>
+            <p className="text-sm font-medium text-foreground">{testimonial.author.name}</p>
+            <p className="text-xs text-muted-foreground">{testimonial.author.role}, {testimonial.author.company}</p>
           </div>
         </div>
       </div>
 
-      {/* Progress Bar */}
       {isPlaying && (
-        <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-border dark:bg-white/20">
-          <div
-            className="h-full bg-primary transition-all duration-150 ease-linear"
-            style={{ width: `${progress}%` }}
-          />
+        <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-border">
+          <div className="h-full bg-primary transition-all duration-150 ease-linear" style={{ width: `${progress}%` }} />
         </div>
       )}
     </div>
   );
 }
 
-// Text Testimonial Card Component
+// Text Card - Theme adaptive
 function TextCard({ testimonial }: { testimonial: Testimonial }) {
   const isFeatured = testimonial.type === 'featured';
 
   return (
-    <div
-      className={`flex flex-col p-5 border border-border ${
-        isFeatured ? 'bg-primary text-primary-foreground' : 'bg-background'
-      }`}
-    >
+    <div className={`flex flex-col p-5 border-b border-r border-border ${isFeatured ? 'bg-primary text-primary-foreground' : 'bg-background'}`}>
       {isFeatured && (
         <div className="mb-3 flex">
           {[...Array(5)].map((_, i) => (
@@ -283,40 +253,25 @@ function TextCard({ testimonial }: { testimonial: Testimonial }) {
           ))}
         </div>
       )}
-
-      <blockquote
-        className={`text-sm leading-relaxed ${
-          isFeatured ? 'text-primary-foreground' : 'text-foreground'
-        }`}
-      >
+      <blockquote className={`text-sm leading-relaxed ${isFeatured ? 'text-primary-foreground' : 'text-foreground'}`}>
         &ldquo;{testimonial.quote}&rdquo;
       </blockquote>
-
       <div className="mt-5 flex items-center gap-3">
         <Avatar className={`h-8 w-8 rounded-none ${isFeatured ? 'ring-1 ring-primary-foreground/30' : 'border border-border'}`}>
           <AvatarImage src={testimonial.author.image} alt={testimonial.author.name} className="rounded-none" />
-          <AvatarFallback className={`rounded-none text-xs ${isFeatured ? 'bg-primary-foreground/20' : ''}`}>
-            {testimonial.author.name.charAt(0)}
-          </AvatarFallback>
+          <AvatarFallback className={`rounded-none text-xs ${isFeatured ? 'bg-primary-foreground/20' : ''}`}>{testimonial.author.name.charAt(0)}</AvatarFallback>
         </Avatar>
         <div>
-          <p className={`text-sm font-medium ${isFeatured ? 'text-primary-foreground' : 'text-foreground'}`}>
-            {testimonial.author.name}
-          </p>
-          <p className={`text-xs ${isFeatured ? 'text-primary-foreground/70' : 'text-muted-foreground'}`}>
-            {testimonial.author.role}, {testimonial.author.company}
-          </p>
+          <p className={`text-sm font-medium ${isFeatured ? 'text-primary-foreground' : 'text-foreground'}`}>{testimonial.author.name}</p>
+          <p className={`text-xs ${isFeatured ? 'text-primary-foreground/70' : 'text-muted-foreground'}`}>{testimonial.author.role}, {testimonial.author.company}</p>
         </div>
       </div>
     </div>
   );
 }
 
-// Testimonial Card Router
 function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
-  if (testimonial.type === 'video') {
-    return <VideoCard testimonial={testimonial} />;
-  }
+  if (testimonial.type === 'video') return <VideoCard testimonial={testimonial} />;
   return <TextCard testimonial={testimonial} />;
 }
 
@@ -337,11 +292,11 @@ const Testimonials = () => {
         </p>
       </div>
 
-      {/* Masonry Grid */}
-      <div className="p-3 sm:p-4 lg:p-6">
-        <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 [column-gap:12px] sm:[column-gap:16px]">
+      {/* Masonry Grid - NO gaps */}
+      <div className="border-l border-border">
+        <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 [column-gap:0]">
           {testimonials.map((testimonial, index) => (
-            <div key={index} className="mb-3 sm:mb-4 break-inside-avoid">
+            <div key={index} className="break-inside-avoid">
               <TestimonialCard testimonial={testimonial} />
             </div>
           ))}
