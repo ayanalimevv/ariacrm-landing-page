@@ -17,10 +17,11 @@ interface Testimonial {
     company: string;
     image: string;
   };
-  size?: 'sm' | 'md' | 'lg';
 }
 
+// Organized for 3-column grid layout - fills completely with no gaps
 const testimonials: Testimonial[] = [
+  // Row 1
   {
     type: 'video',
     video: '/videos/testimonial-01.mp4',
@@ -31,7 +32,6 @@ const testimonials: Testimonial[] = [
       company: 'Acme Inc',
       image: 'https://github.com/haydenbleasel.png',
     },
-    size: 'lg',
   },
   {
     type: 'text',
@@ -42,18 +42,6 @@ const testimonials: Testimonial[] = [
       company: 'HelpDesk Pro',
       image: 'https://github.com/pontusab.png',
     },
-    size: 'sm',
-  },
-  {
-    type: 'featured',
-    quote: 'Vertex replaced 5 different automation tools for us. One platform handles everything from data sync to AI-powered document processing. The ROI was immediate.',
-    author: {
-      name: 'Michael Foster',
-      role: 'VP of Engineering',
-      company: 'Dropbox',
-      image: 'https://github.com/rauchg.png',
-    },
-    size: 'md',
   },
   {
     type: 'video',
@@ -65,7 +53,17 @@ const testimonials: Testimonial[] = [
       company: 'TechFlow',
       image: 'https://github.com/leerob.png',
     },
-    size: 'md',
+  },
+  // Row 2
+  {
+    type: 'featured',
+    quote: 'Vertex replaced 5 different automation tools for us. One platform handles everything from data sync to AI-powered document processing. The ROI was immediate.',
+    author: {
+      name: 'Michael Foster',
+      role: 'VP of Engineering',
+      company: 'Dropbox',
+      image: 'https://github.com/rauchg.png',
+    },
   },
   {
     type: 'text',
@@ -76,7 +74,6 @@ const testimonials: Testimonial[] = [
       company: 'CloudScale',
       image: 'https://github.com/shuding.png',
     },
-    size: 'sm',
   },
   {
     type: 'text',
@@ -87,7 +84,17 @@ const testimonials: Testimonial[] = [
       company: 'DataFlow',
       image: 'https://github.com/shadcn.png',
     },
-    size: 'md',
+  },
+  // Row 3
+  {
+    type: 'text',
+    quote: 'Implementation took 2 days instead of the 2 months we expected. The pre-built integrations saved us countless hours.',
+    author: {
+      name: 'Thomas Wright',
+      role: 'IT Director',
+      company: 'Notion',
+      image: 'https://github.com/timneutkens.png',
+    },
   },
   {
     type: 'video',
@@ -99,7 +106,6 @@ const testimonials: Testimonial[] = [
       company: 'StartupXYZ',
       image: 'https://github.com/adamwathan.png',
     },
-    size: 'lg',
   },
   {
     type: 'featured',
@@ -110,22 +116,10 @@ const testimonials: Testimonial[] = [
       company: 'Stripe',
       image: 'https://github.com/vercel.png',
     },
-    size: 'md',
-  },
-  {
-    type: 'text',
-    quote: 'Implementation took 2 days instead of the 2 months we expected. The pre-built integrations saved us countless hours.',
-    author: {
-      name: 'Thomas Wright',
-      role: 'IT Director',
-      company: 'Notion',
-      image: 'https://github.com/timneutkens.png',
-    },
-    size: 'sm',
   },
 ];
 
-// Video Testimonial Card Component
+// Video Testimonial Card Component - Theme aware, no autoplay
 function VideoCard({ testimonial }: { testimonial: Testimonial }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -158,28 +152,30 @@ function VideoCard({ testimonial }: { testimonial: Testimonial }) {
   const handleVideoEnd = () => {
     setIsPlaying(false);
     setProgress(0);
+    if (videoRef.current) {
+      videoRef.current.currentTime = 0;
+    }
   };
-
-  const heightClass = testimonial.size === 'lg' ? 'h-[480px]' : 'h-[380px]';
 
   return (
     <div
-      className={`group relative overflow-hidden bg-neutral-900 border-b border-r border-border ${heightClass}`}
+      className="group relative overflow-hidden bg-muted dark:bg-neutral-900 border-b border-r border-border h-full min-h-[320px]"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Video */}
+      {/* Video - no autoplay */}
       <video
         ref={videoRef}
         src={testimonial.video}
         className="absolute inset-0 h-full w-full object-cover"
         playsInline
         muted
+        preload="metadata"
         onEnded={handleVideoEnd}
       />
 
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-black/10" />
+      {/* Gradient Overlay - Theme aware */}
+      <div className="absolute inset-0 bg-gradient-to-t from-white/95 via-white/40 to-transparent dark:from-black/95 dark:via-black/30 dark:to-black/10" />
 
       {/* Play Button */}
       <button
@@ -190,14 +186,14 @@ function VideoCard({ testimonial }: { testimonial: Testimonial }) {
         aria-label={isPlaying ? 'Pause video' : 'Play video'}
       >
         <div
-          className={`flex h-14 w-14 items-center justify-center bg-white shadow-2xl transition-all duration-300 ${
+          className={`flex h-14 w-14 items-center justify-center bg-foreground shadow-2xl transition-all duration-300 ${
             isHovered ? 'scale-110' : 'scale-100'
           }`}
         >
           {isPlaying ? (
-            <Icons.pause className="h-5 w-5 text-neutral-900" />
+            <Icons.pause className="h-5 w-5 text-background" />
           ) : (
-            <Icons.play className="h-5 w-5 text-neutral-900 ml-0.5" />
+            <Icons.play className="h-5 w-5 text-background ml-0.5" />
           )}
         </div>
       </button>
@@ -208,20 +204,20 @@ function VideoCard({ testimonial }: { testimonial: Testimonial }) {
           isPlaying && !isHovered ? 'translate-y-4 opacity-0' : 'translate-y-0 opacity-100'
         }`}
       >
-        <blockquote className="text-sm text-white/90 leading-relaxed mb-4 line-clamp-3">
+        <blockquote className="text-sm text-foreground dark:text-white/90 leading-relaxed mb-4 line-clamp-3">
           &ldquo;{testimonial.quote}&rdquo;
         </blockquote>
 
         <div className="flex items-center gap-3">
-          <Avatar className="h-9 w-9 ring-2 ring-white/20 rounded-none">
+          <Avatar className="h-9 w-9 ring-2 ring-border dark:ring-white/20 rounded-none">
             <AvatarImage src={testimonial.author.image} alt={testimonial.author.name} className="rounded-none" />
-            <AvatarFallback className="bg-white/20 text-white text-xs rounded-none">
+            <AvatarFallback className="bg-muted dark:bg-white/20 text-foreground dark:text-white text-xs rounded-none">
               {testimonial.author.name.charAt(0)}
             </AvatarFallback>
           </Avatar>
           <div>
-            <p className="text-sm font-medium text-white">{testimonial.author.name}</p>
-            <p className="text-xs text-white/60">
+            <p className="text-sm font-medium text-foreground dark:text-white">{testimonial.author.name}</p>
+            <p className="text-xs text-muted-foreground dark:text-white/60">
               {testimonial.author.role}, {testimonial.author.company}
             </p>
           </div>
@@ -229,12 +225,14 @@ function VideoCard({ testimonial }: { testimonial: Testimonial }) {
       </div>
 
       {/* Progress Bar */}
-      <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/10">
-        <div
-          className="h-full bg-white transition-all duration-150 ease-linear"
-          style={{ width: `${progress}%` }}
-        />
-      </div>
+      {isPlaying && (
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-border dark:bg-white/10">
+          <div
+            className="h-full bg-primary transition-all duration-150 ease-linear"
+            style={{ width: `${progress}%` }}
+          />
+        </div>
+      )}
     </div>
   );
 }
@@ -245,7 +243,7 @@ function TextCard({ testimonial }: { testimonial: Testimonial }) {
 
   return (
     <div
-      className={`flex flex-col justify-between p-6 border-b border-r border-border ${
+      className={`flex flex-col justify-between p-6 border-b border-r border-border h-full min-h-[200px] ${
         isFeatured
           ? 'bg-primary text-primary-foreground'
           : 'bg-background'
@@ -270,7 +268,7 @@ function TextCard({ testimonial }: { testimonial: Testimonial }) {
       <blockquote
         className={`text-sm leading-relaxed ${
           isFeatured ? 'text-primary-foreground' : 'text-foreground'
-        } ${testimonial.size === 'md' ? 'text-base' : ''}`}
+        }`}
       >
         &ldquo;{testimonial.quote}&rdquo;
       </blockquote>
@@ -320,13 +318,11 @@ const Testimonials = () => {
         </p>
       </div>
 
-      {/* Masonry Grid - No gaps, sharp borders */}
+      {/* Grid - No gaps, 3 columns on desktop */}
       <div className="border-l border-border">
-        <div className="columns-1 sm:columns-2 lg:columns-3 [column-gap:0]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((testimonial, index) => (
-            <div key={index} className="break-inside-avoid">
-              <TestimonialCard testimonial={testimonial} />
-            </div>
+            <TestimonialCard key={index} testimonial={testimonial} />
           ))}
         </div>
       </div>
