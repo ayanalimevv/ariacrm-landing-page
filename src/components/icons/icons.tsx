@@ -27,8 +27,10 @@ import {
   Moon,
   MoreVertical,
   Newspaper,
+  Pause,
   PhoneCall,
   Pizza,
+  Play,
   Plus,
   Rss,
   SendHorizonal,
@@ -132,4 +134,6 @@ export const Icons = {
   ),
   check: Check,
   rss: Rss,
+  play: Play,
+  pause: Pause,
 };
