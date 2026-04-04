@@ -144,7 +144,7 @@ const testimonials: Testimonial[] = [
   },
 ];
 
-// Video Card - Theme adaptive, NO black
+// Video Card - Light background, NO black
 function VideoCard({ testimonial }: { testimonial: Testimonial }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -178,42 +178,52 @@ function VideoCard({ testimonial }: { testimonial: Testimonial }) {
 
   return (
     <div
-      className="relative overflow-hidden bg-muted border-b border-r border-border aspect-[3/4]"
+      className="relative overflow-hidden bg-muted border-b border-r border-border"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <video
-        ref={videoRef}
-        src={testimonial.video}
-        className="absolute inset-0 h-full w-full object-cover"
-        playsInline
-        muted
-        preload="metadata"
-        onEnded={handleVideoEnd}
-      />
+      {/* Video thumbnail area */}
+      <div className="relative aspect-[4/3] overflow-hidden">
+        <video
+          ref={videoRef}
+          src={testimonial.video}
+          className="absolute inset-0 h-full w-full object-cover"
+          playsInline
+          muted
+          preload="metadata"
+          onEnded={handleVideoEnd}
+        />
 
-      {/* Theme-adaptive gradient - uses background color */}
-      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
+        {/* Light overlay for better visibility */}
+        <div className="absolute inset-0 bg-white/30 dark:bg-white/10" />
 
-      {/* Play Button */}
-      <button
-        onClick={handlePlayPause}
-        className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${
-          isPlaying && !isHovered ? 'opacity-0' : 'opacity-100'
-        }`}
-        aria-label={isPlaying ? 'Pause video' : 'Play video'}
-      >
-        <div className={`flex h-12 w-12 items-center justify-center bg-foreground transition-transform duration-300 ${isHovered ? 'scale-110' : 'scale-100'}`}>
-          {isPlaying ? (
-            <Icons.pause className="h-4 w-4 text-background" />
-          ) : (
-            <Icons.play className="h-4 w-4 text-background ml-0.5" />
-          )}
-        </div>
-      </button>
+        {/* Play Button */}
+        <button
+          onClick={handlePlayPause}
+          className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${
+            isPlaying && !isHovered ? 'opacity-0' : 'opacity-100'
+          }`}
+          aria-label={isPlaying ? 'Pause video' : 'Play video'}
+        >
+          <div className={`flex h-12 w-12 items-center justify-center bg-white border border-border shadow-lg transition-transform duration-300 ${isHovered ? 'scale-110' : 'scale-100'}`}>
+            {isPlaying ? (
+              <Icons.pause className="h-4 w-4 text-foreground" />
+            ) : (
+              <Icons.play className="h-4 w-4 text-foreground ml-0.5" />
+            )}
+          </div>
+        </button>
 
-      {/* Content */}
-      <div className={`absolute inset-x-0 bottom-0 p-5 transition-all duration-300 ${isPlaying && !isHovered ? 'translate-y-2 opacity-0' : 'translate-y-0 opacity-100'}`}>
+        {/* Progress Bar */}
+        {isPlaying && (
+          <div className="absolute bottom-0 left-0 right-0 h-1 bg-border">
+            <div className="h-full bg-primary transition-all duration-150 ease-linear" style={{ width: `${progress}%` }} />
+          </div>
+        )}
+      </div>
+
+      {/* Content - always on light background */}
+      <div className="p-5 bg-background">
         <blockquote className="text-sm text-foreground leading-relaxed mb-4">
           &ldquo;{testimonial.quote}&rdquo;
         </blockquote>
@@ -228,42 +238,36 @@ function VideoCard({ testimonial }: { testimonial: Testimonial }) {
           </div>
         </div>
       </div>
-
-      {isPlaying && (
-        <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-border">
-          <div className="h-full bg-primary transition-all duration-150 ease-linear" style={{ width: `${progress}%` }} />
-        </div>
-      )}
     </div>
   );
 }
 
-// Text Card - Theme adaptive
+// Text Card - Light backgrounds only
 function TextCard({ testimonial }: { testimonial: Testimonial }) {
   const isFeatured = testimonial.type === 'featured';
 
   return (
-    <div className={`flex flex-col p-5 border-b border-r border-border ${isFeatured ? 'bg-primary text-primary-foreground' : 'bg-background'}`}>
+    <div className={`flex flex-col p-5 border-b border-r border-border ${isFeatured ? 'bg-muted' : 'bg-background'}`}>
       {isFeatured && (
         <div className="mb-3 flex">
           {[...Array(5)].map((_, i) => (
-            <svg key={i} className="h-3.5 w-3.5 fill-current" viewBox="0 0 20 20">
+            <svg key={i} className="h-3.5 w-3.5 fill-primary" viewBox="0 0 20 20">
               <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
             </svg>
           ))}
         </div>
       )}
-      <blockquote className={`text-sm leading-relaxed ${isFeatured ? 'text-primary-foreground' : 'text-foreground'}`}>
+      <blockquote className="text-sm leading-relaxed text-foreground">
         &ldquo;{testimonial.quote}&rdquo;
       </blockquote>
       <div className="mt-5 flex items-center gap-3">
-        <Avatar className={`h-8 w-8 rounded-none ${isFeatured ? 'ring-1 ring-primary-foreground/30' : 'border border-border'}`}>
+        <Avatar className="h-8 w-8 rounded-none border border-border">
           <AvatarImage src={testimonial.author.image} alt={testimonial.author.name} className="rounded-none" />
-          <AvatarFallback className={`rounded-none text-xs ${isFeatured ? 'bg-primary-foreground/20' : ''}`}>{testimonial.author.name.charAt(0)}</AvatarFallback>
+          <AvatarFallback className="rounded-none text-xs">{testimonial.author.name.charAt(0)}</AvatarFallback>
         </Avatar>
         <div>
-          <p className={`text-sm font-medium ${isFeatured ? 'text-primary-foreground' : 'text-foreground'}`}>{testimonial.author.name}</p>
-          <p className={`text-xs ${isFeatured ? 'text-primary-foreground/70' : 'text-muted-foreground'}`}>{testimonial.author.role}, {testimonial.author.company}</p>
+          <p className="text-sm font-medium text-foreground">{testimonial.author.name}</p>
+          <p className="text-xs text-muted-foreground">{testimonial.author.role}, {testimonial.author.company}</p>
         </div>
       </div>
     </div>
