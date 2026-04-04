@@ -164,7 +164,7 @@ function VideoCard({ testimonial }: { testimonial: Testimonial }) {
 
   return (
     <div
-      className={`group relative overflow-hidden rounded-2xl bg-neutral-900 ${heightClass}`}
+      className={`group relative overflow-hidden bg-neutral-900 border-b border-r border-border ${heightClass}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -190,7 +190,7 @@ function VideoCard({ testimonial }: { testimonial: Testimonial }) {
         aria-label={isPlaying ? 'Pause video' : 'Play video'}
       >
         <div
-          className={`flex h-14 w-14 items-center justify-center rounded-full bg-white shadow-2xl transition-all duration-300 ${
+          className={`flex h-14 w-14 items-center justify-center bg-white shadow-2xl transition-all duration-300 ${
             isHovered ? 'scale-110' : 'scale-100'
           }`}
         >
@@ -213,9 +213,9 @@ function VideoCard({ testimonial }: { testimonial: Testimonial }) {
         </blockquote>
 
         <div className="flex items-center gap-3">
-          <Avatar className="h-9 w-9 ring-2 ring-white/20">
-            <AvatarImage src={testimonial.author.image} alt={testimonial.author.name} />
-            <AvatarFallback className="bg-white/20 text-white text-xs">
+          <Avatar className="h-9 w-9 ring-2 ring-white/20 rounded-none">
+            <AvatarImage src={testimonial.author.image} alt={testimonial.author.name} className="rounded-none" />
+            <AvatarFallback className="bg-white/20 text-white text-xs rounded-none">
               {testimonial.author.name.charAt(0)}
             </AvatarFallback>
           </Avatar>
@@ -245,10 +245,10 @@ function TextCard({ testimonial }: { testimonial: Testimonial }) {
 
   return (
     <div
-      className={`flex flex-col justify-between rounded-2xl p-6 ${
+      className={`flex flex-col justify-between p-6 border-b border-r border-border ${
         isFeatured
           ? 'bg-primary text-primary-foreground'
-          : 'bg-muted/50 border border-border'
+          : 'bg-background'
       }`}
     >
       {isFeatured && (
@@ -276,9 +276,9 @@ function TextCard({ testimonial }: { testimonial: Testimonial }) {
       </blockquote>
 
       <div className="mt-6 flex items-center gap-3">
-        <Avatar className={`h-9 w-9 ${isFeatured ? 'ring-2 ring-primary-foreground/20' : 'border border-border'}`}>
-          <AvatarImage src={testimonial.author.image} alt={testimonial.author.name} />
-          <AvatarFallback className={isFeatured ? 'bg-primary-foreground/20 text-primary-foreground' : ''}>
+        <Avatar className={`h-9 w-9 rounded-none ${isFeatured ? 'ring-2 ring-primary-foreground/20' : 'border border-border'}`}>
+          <AvatarImage src={testimonial.author.image} alt={testimonial.author.name} className="rounded-none" />
+          <AvatarFallback className={`rounded-none ${isFeatured ? 'bg-primary-foreground/20 text-primary-foreground' : ''}`}>
             {testimonial.author.name.charAt(0)}
           </AvatarFallback>
         </Avatar>
@@ -320,9 +320,9 @@ const Testimonials = () => {
         </p>
       </div>
 
-      {/* Masonry Grid */}
-      <div className="px-6 py-12 md:px-12 md:py-16">
-        <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
+      {/* Masonry Grid - No gaps, sharp borders */}
+      <div className="border-l border-border">
+        <div className="columns-1 sm:columns-2 lg:columns-3 [column-gap:0]">
           {testimonials.map((testimonial, index) => (
             <div key={index} className="break-inside-avoid">
               <TestimonialCard testimonial={testimonial} />
