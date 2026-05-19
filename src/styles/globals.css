@@ -589,6 +589,16 @@
   animation: hue-rotate-animation 10s linear infinite;
 }
 
+/* Auto-scrolling client carousel ribbon */
+@keyframes auto-scroll-ribbon {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% / 3));
+  }
+}
+
 /* Perspective utilities for 3D effects */
 .perspective-dramatic {
   perspective: 800px;
@@ -614,4 +624,18 @@
 /* Max width utility */
 .max-w-4\/5 {
   max-width: 80%;
+}
+
+/* Slow spin animation for AnimatedBadge beam */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 3s linear infinite;
 }

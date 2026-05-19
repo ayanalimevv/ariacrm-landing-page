@@ -1,6 +1,5 @@
-import Pricing from '../_components/pricing';
-import { FAQ } from '../_components/faq';
 import CTA from '../_components/cta';
+import Pricing from '../_components/pricing';
 
 export default function PricingPage() {
   return (
@@ -24,11 +23,6 @@ export default function PricingPage() {
 
           {/* Pricing Section */}
           <Pricing />
-
-          {/* FAQ Section */}
-          <section id="faq" className="scroll-mt-20">
-            <FAQ />
-          </section>
 
           {/* CTA Section */}
           <CTA />
