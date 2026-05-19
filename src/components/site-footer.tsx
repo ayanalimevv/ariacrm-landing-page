@@ -1,4 +1,4 @@
-import { ArrowUpRight, Mail, Zap } from 'lucide-react';
+import { ArrowUpRight, Mail } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import type { ComponentType, SVGProps } from 'react';
@@ -9,6 +9,7 @@ import {
   SiX,
 } from 'react-icons/si';
 
+import { Logo } from '@/components/logo';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { cn } from '@/lib/utils';
@@ -207,13 +208,7 @@ export function SiteFooter() {
             {/* Brand */}
             <div className='sm:col-span-2 md:col-span-4'>
               <div className='flex items-center gap-2'>
-                <span className='flex size-7 items-center justify-center rounded-md bg-foreground'>
-                  <Zap
-                    className='size-4 text-background'
-                    fill='currentColor'
-                    strokeWidth={0}
-                  />
-                </span>
+                <Logo />
                 <span className='font-bold text-foreground text-xl'>
                   Folio
                 </span>
