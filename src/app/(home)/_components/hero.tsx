@@ -16,7 +16,7 @@ const Hero = () => {
               <div className='relative z-10 mx-auto grid max-w-5xl items-center gap-4 px-6 text-center'>
                 <AnimatedBadge
                   text='Simplify Charts — Open Source'
-                  href='https://ui.simplifyingai.com'
+                  href='#'
                   className='justify-self-center'
                 />
                 <h1 className='text-balance font-semibold text-4xl sm:text-5xl lg:text-6xl'>
@@ -24,7 +24,7 @@ const Hero = () => {
                 </h1>
                 <div className='mx-auto max-w-2xl'>
                   <p className='mb-6 text-balance text-lg text-muted-foreground lg:text-xl'>
-                    Simplifying AI builds AI-powered tools that help teams query
+                    Folio builds AI-powered tools that help teams query
                     databases, visualize data, and make faster decisions —
                     without writing SQL.
                   </p>

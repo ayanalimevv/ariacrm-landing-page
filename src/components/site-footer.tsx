@@ -214,26 +214,21 @@ export function SiteFooter() {
                     strokeWidth={0}
                   />
                 </span>
-                <span className='flex flex-col leading-none'>
-                  <span className='font-bold text-foreground text-xl'>
-                    Folio
-                  </span>
-                  <span className='mt-1 text-[11px] text-muted-foreground'>
-                    by Simplifying AI
-                  </span>
+                <span className='font-bold text-foreground text-xl'>
+                  Folio
                 </span>
               </div>
               <p className='mt-5 max-w-xs text-muted-foreground text-sm leading-relaxed'>
-                Folio is the AI-powered workspace from Simplifying AI that
-                helps teams query, analyze, and act on their data — all in one
-                place.
+                Folio is the AI-powered workspace that helps teams query
+                databases, visualize data, and make faster decisions — all in
+                one place.
               </p>
               <a
-                href='mailto:hello@simplifyingai.com'
+                href='mailto:hello@folio.app'
                 className='mt-6 inline-flex items-center gap-2 rounded-full border border-border bg-background px-3.5 py-1.5 font-medium text-foreground text-xs shadow-sm transition-shadow hover:shadow'
               >
                 <Mail className='size-3.5 text-muted-foreground' />
-                hello@simplifyingai.com
+                hello@folio.app
               </a>
               <div className='mt-6 flex gap-2'>
                 {socials.map(({ Icon, label, href }) => (
@@ -270,7 +265,7 @@ export function SiteFooter() {
 
           <div className='flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between'>
             <span className='text-muted-foreground text-sm'>
-              © {new Date().getFullYear()} Simplifying AI. All rights reserved.
+              © {new Date().getFullYear()} Folio. All rights reserved.
             </span>
             <div className='flex gap-6 text-sm'>
               <Link

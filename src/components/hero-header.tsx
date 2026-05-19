@@ -49,13 +49,8 @@ export function HeroHeader() {
                 className='flex items-center gap-2'
               >
                 <Logo />
-                <span className='flex flex-col leading-none'>
-                  <span className='font-semibold text-foreground text-sm'>
-                    Folio
-                  </span>
-                  <span className='mt-0.5 text-[10px] text-muted-foreground'>
-                    by Simplifying AI
-                  </span>
+                <span className='font-semibold text-foreground text-sm'>
+                  Folio
                 </span>
               </Link>
 

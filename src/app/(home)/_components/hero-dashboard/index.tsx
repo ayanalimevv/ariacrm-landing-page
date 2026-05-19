@@ -30,13 +30,13 @@ function WorkspaceHeader() {
   return (
     <div className='hidden items-center gap-3 border-border border-r border-b bg-card pr-4 pl-3 lg:flex lg:h-12'>
       <img
-        src='/simplifyingai.svg'
-        alt='Simplifying AI'
-        className='h-6 w-auto shrink-0 object-contain dark:invert'
+        src='/logo.png'
+        alt='Folio'
+        className='h-6 w-auto shrink-0 object-contain'
       />
       <div className='flex h-full flex-1 items-center gap-1'>
         <span className='font-semibold text-foreground text-sm leading-5 tracking-[-0.16px]'>
-          Simplifying AI
+          Folio
         </span>
         <svg
           role='presentation'

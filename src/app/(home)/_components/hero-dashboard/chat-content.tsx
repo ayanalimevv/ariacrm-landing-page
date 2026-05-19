@@ -284,7 +284,7 @@ function UnifiedInput({
         <div className='px-2 pt-1 pb-0 sm:px-4 sm:pt-3 sm:pb-2'>
           {showPlaceholder || isChatting ? (
             <span className='font-medium text-[10px] text-muted-foreground leading-3 sm:text-sm sm:leading-5'>
-              {isChatting ? 'Ask your data anything...' : 'Ask Simplifying AI'}
+              {isChatting ? 'Ask your data anything...' : 'Ask Folio'}
             </span>
           ) : (
             <span className='font-medium text-[10px] text-foreground leading-3 sm:text-sm sm:leading-5'>
