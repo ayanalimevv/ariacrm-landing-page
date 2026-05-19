@@ -45,10 +45,18 @@ export function HeroHeader() {
             <div className='flex w-full justify-between lg:w-auto'>
               <Link
                 href='/'
-                aria-label='home'
-                className='flex items-center space-x-2'
+                aria-label='Folio home'
+                className='flex items-center gap-2'
               >
                 <Logo />
+                <span className='flex flex-col leading-none'>
+                  <span className='font-semibold text-foreground text-sm'>
+                    Folio
+                  </span>
+                  <span className='mt-0.5 text-[10px] text-muted-foreground'>
+                    by Simplifying AI
+                  </span>
+                </span>
               </Link>
 
               <button

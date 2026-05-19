@@ -67,7 +67,7 @@ const footerColumns: FooterSection[][] = [
       ],
     },
     {
-      title: 'Stackr for',
+      title: 'Folio for',
       links: [
         { label: 'Startups', href: '#' },
         { label: 'Product teams', href: '#' },
@@ -196,7 +196,7 @@ export function SiteFooter() {
           size='lg'
           className='mt-8 rounded-full px-6 py-5 font-medium text-sm'
         >
-          Use Stackr Free
+          Try Folio Free
         </Button>
       </div>
 
@@ -214,21 +214,26 @@ export function SiteFooter() {
                     strokeWidth={0}
                   />
                 </span>
-                <span className='font-bold text-foreground text-xl'>
-                  Stackr
+                <span className='flex flex-col leading-none'>
+                  <span className='font-bold text-foreground text-xl'>
+                    Folio
+                  </span>
+                  <span className='mt-1 text-[11px] text-muted-foreground'>
+                    by Simplifying AI
+                  </span>
                 </span>
               </div>
               <p className='mt-5 max-w-xs text-muted-foreground text-sm leading-relaxed'>
-                Stackr is a smart workspace that brings planning,
-                collaboration, and AI-powered productivity into one simple
-                platform.
+                Folio is the AI-powered workspace from Simplifying AI that
+                helps teams query, analyze, and act on their data — all in one
+                place.
               </p>
               <a
-                href='mailto:hello@stackr.co'
+                href='mailto:hello@simplifyingai.com'
                 className='mt-6 inline-flex items-center gap-2 rounded-full border border-border bg-background px-3.5 py-1.5 font-medium text-foreground text-xs shadow-sm transition-shadow hover:shadow'
               >
                 <Mail className='size-3.5 text-muted-foreground' />
-                Hello @stackr.co
+                hello@simplifyingai.com
               </a>
               <div className='mt-6 flex gap-2'>
                 {socials.map(({ Icon, label, href }) => (
@@ -265,7 +270,7 @@ export function SiteFooter() {
 
           <div className='flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between'>
             <span className='text-muted-foreground text-sm'>
-              © {new Date().getFullYear()} Stackr. All rights reserved.
+              © {new Date().getFullYear()} Simplifying AI. All rights reserved.
             </span>
             <div className='flex gap-6 text-sm'>
               <Link
