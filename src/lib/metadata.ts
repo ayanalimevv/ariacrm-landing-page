@@ -6,14 +6,14 @@ export function createMetadata(override: Metadata): Metadata {
     openGraph: {
       title: override.title ?? undefined,
       description: override.description ?? undefined,
-      url: 'https://vertex.ai',
+      url: 'https://Folio.ai',
       images: '/banner.png',
-      siteName: 'Vertex',
+      siteName: 'Folio',
       ...override.openGraph,
     },
     twitter: {
       card: 'summary_large_image',
-      creator: '@vertex_ai',
+      creator: '@Folio_ai',
       title: override.title ?? undefined,
       description: override.description ?? undefined,
       images: '/banner.png',

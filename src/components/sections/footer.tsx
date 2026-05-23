@@ -45,7 +45,7 @@ export function Footer() {
               <FaGithub className='size-5' />
             </InlineLink>
             <InlineLink
-              href='mailto:hello@vertex.ai'
+              href='mailto:hello@Folio.ai'
               className='text-muted-foreground transition-colors hover:text-foreground'
             >
               <HiOutlineMail className='size-5' />

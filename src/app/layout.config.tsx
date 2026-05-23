@@ -2,10 +2,10 @@ import { Icons } from '@/components/icons/icons';
 import type { LinkItemType } from 'fumadocs-ui/layouts/links';
 import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
 
-export const title = 'Vertex';
+export const title = 'Folio';
 export const description =
   'Automate your workflows with AI. Connect your favorite tools, build intelligent automations, and let AI handle the repetitive work.';
-export const owner = 'Vertex';
+export const owner = 'Folio';
 
 export const baseOptions: BaseLayoutProps = {
   nav: {

@@ -21,8 +21,8 @@ const geistMono = Geist_Mono({
 
 export const metadata = createMetadata({
   title: {
-    template: '%s | Vertex',
-    default: 'Vertex',
+    template: '%s | Folio',
+    default: 'Folio',
   },
   description: homeDescription,
   metadataBase: baseUrl,
