@@ -1,5 +1,6 @@
-import { cn } from '@/lib/utils';
 import Image from 'next/image';
+
+import { cn } from '@/lib/utils';
 
 interface LogoProps {
   className?: string;
@@ -8,11 +9,11 @@ interface LogoProps {
 export function Logo({ className }: LogoProps) {
   return (
     <Image
-      src="/logo.png"
-      alt="Logo"
-      width={24}
-      height={24}
-      className={cn('object-contain', className)}
+      src='/logo.png'
+      alt='Folio'
+      width={64}
+      height={64}
+      className={cn('size-7 object-contain dark:invert', className)}
     />
   );
 }
