@@ -46,8 +46,10 @@ const sections = [
     title: 'Our Commitment to Privacy',
     content: (
       <p>
-        At Folio, we take your privacy seriously. Our workflow automation platform is designed to provide a
-        secure environment where your data and automations are protected at all times.
+        At Folio, we take your privacy seriously. Our data intelligence platform
+        is designed so that your warehouse data, query results, and saved views stay
+        protected — only the minimum schema metadata Folio needs to generate SQL
+        ever leaves your environment.
       </p>
     ),
   },
@@ -56,26 +58,28 @@ const sections = [
     content: (
       <ul className='ml-4 list-disc space-y-2'>
         <li>
-          We collect essential information to provide and improve our automation services,
-          including account details, workflow configurations, and execution logs.
+          We collect essential information to provide and improve the service,
+          including account details, saved queries, and dashboard configurations.
         </li>
         <li>
-          Your workflow data and connected app credentials are processed securely and never shared with third
-          parties without explicit consent.
+          Your warehouse credentials and query results are processed securely and
+          never shared with third parties without explicit consent.
         </li>
         <li>
-          Analytics data is used to improve platform performance and
-          user experience.
+          Anonymous usage analytics help us improve query generation accuracy and
+          platform performance.
         </li>
       </ul>
     ),
   },
   {
-    title: 'Workflow Data',
+    title: 'Your Warehouse Data',
     content: (
       <p>
-        Data processed through your workflows is handled with strict confidentiality. We implement
-        data isolation to ensure your automations remain private and secure from other platform users.
+        Query results and underlying tables stay in your warehouse. Folio sends only
+        schema metadata (table names, column names, types) to its AI provider for
+        query generation — never row-level data. We implement strict isolation
+        between customers so your saved queries remain private.
       </p>
     ),
   },
@@ -86,7 +90,8 @@ const sections = [
         <li>All data is encrypted in transit (TLS 1.3) and at rest (AES-256).</li>
         <li>We implement regular security audits, penetration testing, and SOC 2 compliance.</li>
         <li>
-          Connected app credentials are stored using industry-standard vault encryption.
+          Warehouse credentials are stored using industry-standard vault encryption
+          with optional Bring-Your-Own-Key on Enterprise plans.
         </li>
       </ul>
     ),
@@ -95,8 +100,8 @@ const sections = [
     title: 'Your Rights and Controls',
     content: (
       <ul className='ml-4 list-disc space-y-2'>
-        <li>Access and export your workflow data and execution history at any time.</li>
-        <li>Control your privacy settings, API access, and integration permissions.</li>
+        <li>Access and export your saved queries and dashboard configurations at any time.</li>
+        <li>Control your privacy settings, API access, and warehouse connection permissions.</li>
         <li>Request complete data deletion upon account closure.</li>
       </ul>
     ),
