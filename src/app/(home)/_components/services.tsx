@@ -292,10 +292,10 @@ const IntegrationsSection = () => (
         {/* Header Content */}
         <div className="col-span-full row-span-3 space-y-4 p-8 md:col-span-7">
           <h2 className="text-balance text-3xl font-semibold md:text-4xl">
-            Connect to 100+ apps and services
+            Connect to every warehouse and BI surface
           </h2>
           <p className="text-muted-foreground text-balance md:text-lg">
-            Integrate with the tools you already use. From CRMs and databases to AI models and communication platforms, Folio connects your entire stack.
+            Plug into your existing data stack. From Postgres and Snowflake to dbt and Slack, Folio reads your schema and ships answers where your team already works.
           </p>
         </div>
 

@@ -153,7 +153,7 @@ export const Customers = ({
   return (
     <Section className="relative flex flex-col items-center justify-between gap-8 p-6 py-10 sm:flex-row sm:gap-12 md:py-12">
       <p className="text-muted-foreground text-center sm:text-left sm:max-w-xs">
-        {closest}+ companies trust Folio to automate their operations.
+        {closest}+ companies trust Folio to query their data without writing SQL.
       </p>
       <div className="flex-1 flex items-center justify-center sm:justify-end">
         <LogoCarousel />
