@@ -681,7 +681,7 @@ const Features = () => (
           <div className="relative py-24 px-8 lg:py-32">
             <blockquote className="mx-auto max-w-4xl text-center">
               <p className="text-2xl font-medium leading-relaxed tracking-tight sm:text-3xl lg:text-4xl lg:leading-relaxed">
-                &ldquo;Vertex cut our manual processes by 80%. We automated our entire customer onboarding flow in a single afternoon.&rdquo;
+                &ldquo;Folio cut our manual processes by 80%. We automated our entire customer onboarding flow in a single afternoon.&rdquo;
               </p>
               <footer className="mt-10">
                 <p className="font-semibold">Sarah Mitchell</p>

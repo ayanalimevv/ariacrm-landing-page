@@ -40,7 +40,7 @@ const sections = [
     title: 'Overview',
     content: (
       <p>
-        Vertex is an AI workflow automation platform that helps businesses connect their tools,
+        Folio is an AI workflow automation platform that helps businesses connect their tools,
         automate processes, and leverage AI to handle repetitive work.
         By using our platform, you agree to these terms.
       </p>

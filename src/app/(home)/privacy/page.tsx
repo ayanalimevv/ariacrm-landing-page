@@ -46,7 +46,7 @@ const sections = [
     title: 'Our Commitment to Privacy',
     content: (
       <p>
-        At Vertex, we take your privacy seriously. Our workflow automation platform is designed to provide a
+        At Folio, we take your privacy seriously. Our workflow automation platform is designed to provide a
         secure environment where your data and automations are protected at all times.
       </p>
     ),
@@ -106,7 +106,7 @@ const sections = [
     content: (
       <p>
         If you have any questions about your privacy or how we handle your data,
-        please contact us at privacy@vertex.ai or through our support channels.
+        please contact us at privacy@Folio.ai or through our support channels.
       </p>
     ),
   },

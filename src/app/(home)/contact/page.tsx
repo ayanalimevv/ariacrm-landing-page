@@ -12,8 +12,8 @@ const contactInfo = [
   {
     title: 'Email Us',
     description: 'Our team typically responds within 24 hours',
-    value: 'hello@vertex.ai',
-    href: 'mailto:hello@vertex.ai',
+    value: 'hello@Folio.ai',
+    href: 'mailto:hello@Folio.ai',
   },
   {
     title: 'Live Chat',

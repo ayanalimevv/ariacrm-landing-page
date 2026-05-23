@@ -295,7 +295,7 @@ const IntegrationsSection = () => (
             Connect to 100+ apps and services
           </h2>
           <p className="text-muted-foreground text-balance md:text-lg">
-            Integrate with the tools you already use. From CRMs and databases to AI models and communication platforms, Vertex connects your entire stack.
+            Integrate with the tools you already use. From CRMs and databases to AI models and communication platforms, Folio connects your entire stack.
           </p>
         </div>
 

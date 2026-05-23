@@ -18,7 +18,7 @@ export default function CTA(): React.ReactElement {
           <div className='flex w-full items-center'>
             <div className='max-w-xl space-y-4'>
               <p className='text-muted-foreground text-sm md:text-base'>
-                Join thousands of teams using Vertex to automate workflows,
+                Join thousands of teams using Folio to automate workflows,
                 connect their tools, and let AI handle the repetitive work.
               </p>
               <div className='flex flex-row gap-3'>
