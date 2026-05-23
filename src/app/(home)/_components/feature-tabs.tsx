@@ -62,9 +62,9 @@ const CONTENT_TITLES: Record<TabId, string> = {
 };
 
 const FOOTER_ITEMS = [
-  'Email engagement loop',
-  'Modern customer feedback software',
-  'Outdated feedback systems',
+  'Static spreadsheet exports',
+  'Modern data intelligence with AI',
+  'SQL-only editors and BI tools',
 ];
 
 /* -------------------------------------------------------------------------- */
@@ -350,11 +350,11 @@ export default function FeatureTabs() {
         {/* Heading */}
         <div className='grid items-end gap-8 md:grid-cols-2 md:gap-12'>
           <h2 className='text-balance font-bold text-4xl text-foreground tracking-tight md:text-5xl'>
-            Why teams prefer Basebox to other feedback tools
+            Why teams prefer Folio to spreadsheets and SQL editors
           </h2>
           <p className='max-w-md text-base text-muted-foreground leading-relaxed'>
-            Built for teams who care about design and their budget equally.
-            Beautiful enough that users actually submit feedback.
+            Plain English over SQL, beautiful dashboards over CSV exports, and
+            AI that actually explains the chart — not just renders it.
           </p>
         </div>
 

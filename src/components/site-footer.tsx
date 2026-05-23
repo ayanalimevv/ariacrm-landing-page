@@ -2,19 +2,16 @@ import { ArrowUpRight, Mail } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import type { ComponentType, SVGProps } from 'react';
-import {
-  SiFacebook,
-  SiInstagram,
-  SiLinkedin,
-  SiX,
-} from 'react-icons/si';
+import { SiFacebook, SiInstagram, SiLinkedin, SiX } from 'react-icons/si';
 
 import { Logo } from '@/components/logo';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { cn } from '@/lib/utils';
 
-type IconComponent = ComponentType<SVGProps<SVGSVGElement> & { className?: string }>;
+type IconComponent = ComponentType<
+  SVGProps<SVGSVGElement> & { className?: string }
+>;
 
 type FooterLinkItem = {
   label: string;
@@ -37,9 +34,9 @@ const footerColumns: FooterSection[][] = [
         { label: 'Features', href: '#features' },
         { label: 'Changelog', href: '#', badge: 'New' },
         { label: 'Pricing', href: '/pricing' },
-        { label: 'iOS app', href: '#', external: true },
-        { label: 'Android app', href: '#', external: true },
-        { label: 'Slack extension', href: '#', external: true },
+        { label: 'Integrations', href: '#' },
+        { label: 'API', href: '#', external: true },
+        { label: 'Slack app', href: '#', external: true },
       ],
     },
     {
@@ -56,41 +53,41 @@ const footerColumns: FooterSection[][] = [
   ],
   [
     {
-      title: 'Import from',
+      title: 'Connect to',
       links: [
-        { label: 'Notion', href: '#' },
-        { label: 'Asana', href: '#' },
-        { label: 'Trello', href: '#' },
-        { label: 'Linear', href: '#' },
-        { label: 'ClickUp', href: '#' },
-        { label: 'Monday', href: '#' },
-        { label: 'CSV', href: '#' },
+        { label: 'Postgres', href: '#' },
+        { label: 'MySQL', href: '#' },
+        { label: 'Snowflake', href: '#' },
+        { label: 'BigQuery', href: '#' },
+        { label: 'Redshift', href: '#' },
+        { label: 'Databricks', href: '#' },
+        { label: 'CSV upload', href: '#' },
       ],
     },
     {
       title: 'Folio for',
       links: [
-        { label: 'Startups', href: '#' },
+        { label: 'Data teams', href: '#' },
         { label: 'Product teams', href: '#' },
         { label: 'Engineering', href: '#' },
-        { label: 'Designers', href: '#' },
+        { label: 'Founders', href: '#' },
       ],
     },
   ],
   [
     {
-      title: 'Apps',
+      title: 'Integrations',
       links: [
-        { label: 'Gmail', href: '#' },
-        { label: 'Outlook', href: '#' },
         { label: 'Slack', href: '#' },
-        { label: 'Zapier', href: '#' },
-        { label: 'Figma', href: '#' },
-        { label: 'GitHub', href: '#' },
         { label: 'Notion', href: '#' },
+        { label: 'GitHub', href: '#' },
         { label: 'Linear', href: '#' },
-        { label: 'Mixmax', href: '#' },
-        { label: 'Typeform', href: '#' },
+        { label: 'Jira', href: '#' },
+        { label: 'dbt', href: '#' },
+        { label: 'Cube', href: '#' },
+        { label: 'Zapier', href: '#' },
+        { label: 'Webhooks', href: '#' },
+        { label: 'Microsoft Teams', href: '#' },
       ],
     },
   ],
@@ -103,20 +100,20 @@ const footerColumns: FooterSection[][] = [
         { label: 'API reference', href: '#', external: true },
         { label: 'System status', href: '#', external: true },
         { label: 'Tutorials', href: '#' },
-        { label: 'Templates', href: '#', badge: 'New' },
+        { label: 'Query templates', href: '#', badge: 'New' },
         { label: 'Community', href: '#' },
       ],
     },
     {
       title: 'Compare',
       links: [
-        { label: 'vs Monday', href: '#' },
-        { label: 'vs Notion', href: '#' },
-        { label: 'vs Asana', href: '#' },
-        { label: 'vs ClickUp', href: '#' },
-        { label: 'vs Airtable', href: '#' },
-        { label: 'vs Linear', href: '#' },
-        { label: 'vs Wrike', href: '#' },
+        { label: 'vs Tableau', href: '#' },
+        { label: 'vs Looker', href: '#' },
+        { label: 'vs Metabase', href: '#' },
+        { label: 'vs Mode', href: '#' },
+        { label: 'vs Hex', href: '#' },
+        { label: 'vs Sigma', href: '#' },
+        { label: 'vs Power BI', href: '#' },
       ],
     },
   ],
@@ -187,11 +184,11 @@ export function SiteFooter() {
       {/* CTA */}
       <div className='relative px-6 pt-24 pb-32 text-center md:pt-32 md:pb-40 lg:px-8'>
         <h2 className='mx-auto max-w-3xl text-balance font-bold text-5xl text-foreground tracking-tight md:text-6xl lg:text-7xl'>
-          Make your team&apos;s workflow feel lighter.
+          Stop waiting on the data team.
         </h2>
         <p className='mx-auto mt-6 max-w-xl text-balance text-base text-muted-foreground md:text-lg'>
-          No setup. No hassle. Just a smarter way for your team to work
-          together.
+          Connect your warehouse, ask in plain English, and ship the chart
+          before the meeting ends.
         </p>
         <Button
           size='lg'
@@ -208,10 +205,8 @@ export function SiteFooter() {
             {/* Brand */}
             <div className='sm:col-span-2 md:col-span-4'>
               <div className='flex items-center gap-2'>
-                <Logo />
-                <span className='font-bold text-foreground text-xl'>
-                  Folio
-                </span>
+                <Logo className='size-9' />
+                <span className='font-bold text-foreground text-xl'>Folio</span>
               </div>
               <p className='mt-5 max-w-xs text-muted-foreground text-sm leading-relaxed'>
                 Folio is the AI-powered workspace that helps teams query

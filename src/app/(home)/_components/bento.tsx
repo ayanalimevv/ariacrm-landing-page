@@ -407,7 +407,7 @@ function WorkflowAutomation() {
             style={{ top: 230, left: 420 }}
           >
             <span className='whitespace-nowrap font-medium text-[11px] text-emerald-700 dark:text-emerald-400'>
-              High value lead
+              Anomaly detected
             </span>
           </div>
           <div
@@ -415,7 +415,7 @@ function WorkflowAutomation() {
             style={{ top: 130, left: 420 }}
           >
             <span className='whitespace-nowrap font-medium text-[11px] text-muted-foreground'>
-              Low value lead
+              Normal range
             </span>
           </div>
 
@@ -432,9 +432,9 @@ function WorkflowAutomation() {
             <WorkflowNodeCard
               active
               icon={<WorkflowGlyph kind='mixmax' />}
-              title='Add to "High Value" Sequ…'
-              tag='MixMax'
-              description='Adds high value leads to assigned sequence.'
+              title='Alert revenue team'
+              tag='Slack'
+              description='Posts the chart and a summary to #revenue.'
             />
           </div>
 
@@ -445,9 +445,9 @@ function WorkflowAutomation() {
           >
             <WorkflowNodeCard
               icon={<WorkflowGlyph kind='mixmax' />}
-              title='Add to "Low Value"…'
-              tag='MixMax'
-              description='Adds low value leads to assigned sequence.'
+              title='Log to history'
+              tag='Webhook'
+              description='Records the run for monthly reporting.'
             />
           </div>
 
@@ -528,8 +528,8 @@ function WorkflowAutomation() {
 function WorkflowAutomationCard() {
   return (
     <FeatureCard
-      title='Workflow Automation'
-      description='Build multi-step automations with branching logic that route every signal to exactly the right destination. Chain triggers, conditions, and connected tools like Slack and MixMax — then watch the live status of every node and branch update in real time as data flows through your pipeline.'
+      title='Data automations'
+      description='Build multi-step automations that route every metric to exactly the right place. Chain triggers, conditions, and connected tools like Slack — then watch each branch update in real time as data flows through your pipeline.'
       className='lg:col-span-2'
     >
       <WorkflowAutomation />
@@ -544,8 +544,8 @@ function WorkflowAutomationCard() {
 function GuestFeedbackCard() {
   return (
     <FeatureCard
-      title='Guest Feedback'
-      description='Let users submit without signing up. One-click access means more feedback from real customers, including the ones who never bother making accounts.'
+      title='Connect anywhere'
+      description='Plug in Postgres, Snowflake, BigQuery, MySQL, or CSVs — Folio reads your schema and starts answering questions in minutes, with read-only credentials.'
     >
       <div className='absolute inset-0 flex flex-col items-center justify-center pb-28'>
         {/* Top icon — Google Meet */}
@@ -563,7 +563,7 @@ function GuestFeedbackCard() {
           <div className='-translate-x-1/2 -translate-y-1/2 pointer-events-none absolute top-1/2 left-1/2 size-44 rounded-full border border-foreground/15 border-dashed' />
           <div className='-translate-x-1/2 -translate-y-1/2 pointer-events-none absolute top-1/2 left-1/2 size-56 rounded-full border border-foreground/10 border-dashed' />
 
-          {/* Bottom icon — Stackr */}
+          {/* Bottom icon — data source */}
           <div className='relative flex size-16 items-center justify-center rounded-2xl bg-zinc-900 shadow-md'>
             <Zap
               className='size-7 text-emerald-400'
@@ -571,7 +571,7 @@ function GuestFeedbackCard() {
               strokeWidth={0}
             />
             {/* Avatar overlapping bottom-right */}
-            <div className='absolute -right-1 -bottom-1 size-6 rounded-full bg-gradient-to-br from-rose-300 to-pink-400 shadow ring-2 ring-background' />
+            <div className='-right-1 -bottom-1 absolute size-6 rounded-full bg-gradient-to-br from-rose-300 to-pink-400 shadow ring-2 ring-background' />
           </div>
         </div>
       </div>
@@ -602,14 +602,62 @@ const PRODUCT_CARD_ITEMS: {
   scale: number;
   opacity: number;
 }[] = [
-  { text: 'Build executive dashboard', color: 'gray', ty: -414, scale: 0.6, opacity: 0 },
-  { text: 'Forecast Q2 revenue', color: 'red', ty: -354.5, scale: 0.7, opacity: 0.25 },
-  { text: 'Find churn risk customers', color: 'yellow', ty: -268, scale: 0.8, opacity: 0.5 },
-  { text: 'Compare regional sales', color: 'blue', ty: -163.5, scale: 0.9, opacity: 0.75 },
-  { text: 'Top 10 products by revenue', color: 'green', ty: -50, scale: 1, opacity: 1 },
-  { text: 'Track signup funnel drop-off', color: 'purple', ty: 63.5, scale: 0.9, opacity: 0.75 },
-  { text: 'Detect order anomalies', color: 'pink', ty: 168, scale: 0.8, opacity: 0.5 },
-  { text: 'Audit data quality issues', color: 'green', ty: 254.5, scale: 0.7, opacity: 0.25 },
+  {
+    text: 'Build executive dashboard',
+    color: 'gray',
+    ty: -414,
+    scale: 0.6,
+    opacity: 0,
+  },
+  {
+    text: 'Forecast Q2 revenue',
+    color: 'red',
+    ty: -354.5,
+    scale: 0.7,
+    opacity: 0.25,
+  },
+  {
+    text: 'Find churn risk customers',
+    color: 'yellow',
+    ty: -268,
+    scale: 0.8,
+    opacity: 0.5,
+  },
+  {
+    text: 'Compare regional sales',
+    color: 'blue',
+    ty: -163.5,
+    scale: 0.9,
+    opacity: 0.75,
+  },
+  {
+    text: 'Top 10 products by revenue',
+    color: 'green',
+    ty: -50,
+    scale: 1,
+    opacity: 1,
+  },
+  {
+    text: 'Track signup funnel drop-off',
+    color: 'purple',
+    ty: 63.5,
+    scale: 0.9,
+    opacity: 0.75,
+  },
+  {
+    text: 'Detect order anomalies',
+    color: 'pink',
+    ty: 168,
+    scale: 0.8,
+    opacity: 0.5,
+  },
+  {
+    text: 'Audit data quality issues',
+    color: 'green',
+    ty: 254.5,
+    scale: 0.7,
+    opacity: 0.25,
+  },
 ];
 
 function ProductCardCarousel() {
@@ -786,7 +834,7 @@ function WebSearchChatCard() {
               <span className='text-muted-foreground'>Searched web:</span>{' '}
               <span className='font-semibold text-foreground'>5 results</span>
             </div>
-            <div className='flex items-center -space-x-1'>
+            <div className='-space-x-1 flex items-center'>
               <div className='flex size-4 items-center justify-center rounded-sm bg-zinc-900 ring-2 ring-card'>
                 <span className='font-bold text-[7px] text-white'>X</span>
               </div>
@@ -828,8 +876,8 @@ function WebSearchChatCard() {
 function WorkflowTimelineCard() {
   return (
     <FeatureCard
-      title='Workflow Timeline'
-      description="Visualize every team interaction in a clean vertical timeline — interviews, list changes, and more — at a glance."
+      title='Activity timeline'
+      description='Every query, every chart pinned, every dashboard update in a clean vertical timeline — so the team always knows what just shipped.'
     >
       <div className='pointer-events-none relative flex h-full w-full select-none items-center justify-center overflow-hidden bg-background p-4'>
         <svg
@@ -848,7 +896,11 @@ function WorkflowTimelineCard() {
               <rect x='4.5' y='4.5' width='1' height='1' fill='currentColor' />
             </pattern>
           </defs>
-          <rect width='100%' height='100%' fill='url(#workflow-timeline-dots)' />
+          <rect
+            width='100%'
+            height='100%'
+            fill='url(#workflow-timeline-dots)'
+          />
         </svg>
 
         <div className='relative w-full max-w-[340px]'>
@@ -878,7 +930,7 @@ function WorkflowTimelineCard() {
                     <span className='font-semibold text-foreground'>
                       Sofia Rivera
                     </span>{' '}
-                    completed an interview
+                    pinned a chart
                   </span>
                   <span className='ml-auto shrink-0 whitespace-nowrap text-[10px] text-muted-foreground/70'>
                     1 hour ago
@@ -889,22 +941,22 @@ function WorkflowTimelineCard() {
                   <div className='flex items-center justify-between'>
                     <span className='inline-flex items-center gap-0.5 rounded-md bg-emerald-100 px-1.5 py-px font-medium text-[10px] text-emerald-700 dark:bg-emerald-950/50 dark:text-emerald-400'>
                       <BadgeCheck className='size-2.5' strokeWidth={3} />
-                      Attended
+                      Published
                     </span>
-                    <div className='flex -space-x-1'>
+                    <div className='-space-x-1 flex'>
                       <span className='flex size-4 items-center justify-center rounded-full bg-blue-500 font-bold text-[8px] text-white ring-2 ring-card'>
-                        H
+                        R
                       </span>
                       <span className='flex size-4 items-center justify-center rounded-full bg-amber-500 font-bold text-[8px] text-white ring-2 ring-card'>
-                        A
+                        E
                       </span>
                     </div>
                   </div>
                   <p className='mt-1.5 font-semibold text-[11px] text-foreground leading-snug'>
-                    Arthur x Hannah – Founder &amp; Exec Quarterly Meeting
+                    Revenue by region – Q3 review
                   </p>
                   <p className='mt-0.5 text-[10px] text-muted-foreground'>
-                    4:00 PM – 5:00 PM
+                    Pinned to #revenue
                   </p>
                 </div>
 
@@ -942,17 +994,14 @@ function WorkflowTimelineCard() {
                     <span className='shrink-0 font-semibold text-foreground'>
                       Nicole Smith
                     </span>
-                    <span className='shrink-0'>added</span>
+                    <span className='shrink-0'>saved</span>
                     <span className='inline-flex size-3.5 shrink-0 items-center justify-center rounded-sm bg-violet-600 font-bold text-[8px] text-white'>
-                      S
+                      Q
                     </span>
                     <span className='shrink-0 font-semibold text-foreground'>
-                      Stripe
+                      Top 10 customers
                     </span>
-                    <span className='shrink-0'>to</span>
-                    <span className='shrink-0 font-semibold text-foreground'>
-                      3 lists
-                    </span>
+                    <span className='shrink-0'>as a view</span>
                   </span>
                   <span className='ml-auto shrink-0 whitespace-nowrap text-[10px] text-muted-foreground/70'>
                     5 hours ago
@@ -963,7 +1012,7 @@ function WorkflowTimelineCard() {
                   <div className='-left-6 absolute top-0 h-1/2 w-6 rounded-bl-full border-foreground/15 border-b border-l border-dashed' />
                   <div className='flex items-center gap-1 text-[10px] text-muted-foreground'>
                     <ChevronsUpDown className='size-2.5 shrink-0' />
-                    Show all lists
+                    Show all saved queries
                   </div>
                 </div>
               </div>
@@ -985,11 +1034,11 @@ export default function Bento() {
       <div className='mx-auto max-w-7xl px-6 lg:px-8'>
         <div className='grid items-end gap-8 md:grid-cols-2 md:gap-12'>
           <h2 className='text-balance font-bold text-4xl text-foreground tracking-tight md:text-5xl'>
-            Every way your users want to share feedback
+            Every angle of your data, in one workspace
           </h2>
           <p className='max-w-md text-base text-muted-foreground leading-relaxed'>
-            Forward emails, accept guest submissions, gate private boards, log
-            users in instantly — capture every voice without friction.
+            Connect your warehouse, ask in plain English, and ship dashboards
+            your team will actually open — no SQL, no setup calls.
           </p>
         </div>
 
