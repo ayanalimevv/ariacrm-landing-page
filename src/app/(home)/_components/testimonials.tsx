@@ -1,3 +1,5 @@
+import { Plus } from 'lucide-react';
+
 import {
   type Testimonial,
   TestimonialCard,
@@ -7,46 +9,111 @@ const testimonials: Testimonial[] = [
   {
     name: 'Sarah Chen',
     designation: 'Product Manager · Vercel',
-    title: 'Cut our triage time in half',
+    profile: '/avatar-images/avatar-01.jpg',
+    title: 'Cut our analyst queue in half',
     content:
-      'We used to bounce between Notion, email, and three different Slack channels just to triage feedback. Switching to Basebox cut our triage time roughly in half — and the roadmap auto-syncs back to the customers who asked. That last bit alone is what sold the team.',
+      "Every team used to have three tickets sitting in the analyst queue. Folio's plain-English layer means PMs and ops can pull their own numbers, and the SQL it generates is clean enough to trust. Our data team got their afternoons back.",
   },
   {
     name: 'Marcus Webb',
     designation: 'Founder · Resona',
-    title: 'Customers actually fill it out',
+    profile: '/avatar-images/avatar-02.jpg',
+    title: 'Self-serve actually works now',
     content:
-      "Our old feedback form had a 0.6% response rate. Basebox's guest mode plus the inline widget pushed us to 14% in a week. Turns out users will tell you exactly what they want — if you don't make them log in first.",
+      "We tried Looker. We tried Metabase. Both required someone on the team to maintain semantic models. Folio just connects to the warehouse and our investors can ask 'what's MRR by cohort' in Slack and get a chart back.",
   },
   {
     name: 'Priya Anand',
     designation: 'Head of Engineering · Hatch',
-    title: 'The changelog writes itself',
+    profile: '/avatar-images/avatar-05.jpg',
+    title: 'Dashboards write themselves',
     content:
-      'I keep checking if our changelog is real because it just… keeps getting written. We ship feedback as resolved and the public note appears in the right tone, with a link to the original request. My PMs got an afternoon of their week back.',
+      'I keep checking if our dashboards are real because they just… keep updating. Folio drafts the chart, the query, and the right visualization in one pass. We spent zero engineer hours on the latest exec dashboard.',
   },
   {
     name: 'Diego Ramirez',
     designation: 'Designer · Northbeam',
-    title: 'Beautiful enough that I show it off',
+    profile: '/avatar-images/avatar-03.jpg',
+    title: 'Charts I would actually ship',
     content:
-      "Most feedback tools look like they were designed in 2014. Basebox is the first one I've actually screenshotted and posted. The accordion micro-animation alone is worth the price of admission.",
+      "Most BI tools produce charts you'd never put in front of a customer. Folio's defaults are clean enough that I drop them straight into pitch decks. The 'why this chart type' AI nudge is genuinely smart, not gimmicky.",
   },
   {
     name: 'Aisha Khalid',
     designation: 'Customer Success Lead · Lattice',
-    title: 'No more shouting users',
+    profile: '/avatar-images/avatar-01.jpg',
+    title: 'Answers in Slack, not tickets',
     content:
-      'Voting surfaces what the quiet majority wants, not just whoever is loudest in the support channel. We shipped two requests last quarter that had over 200 votes and basically zero direct messages — they would have been invisible to us before.',
+      "Half my job used to be writing ad-hoc data requests for CSMs. Now they ask Folio in Slack — 'renewal rate for accounts over $50K' — and get the answer with the SQL attached, in case they want to verify. Tickets to the data team dropped 70%.",
   },
   {
     name: 'Tom Vasquez',
     designation: 'CTO · Ledgerline',
+    profile: '/avatar-images/avatar-04.jpg',
     title: 'Replaced four tools',
     content:
-      'We dropped Canny, Productboard, a Notion roadmap, and a custom email-forwarding script. All four. Onboarding the team took about an hour and nobody has asked for the old setup back, which says everything.',
+      'We dropped Mode, Hex, a homegrown SQL UI, and an internal chatbot we never finished. All four. Onboarding the team took about an hour and nobody has asked for the old stack back, which says everything.',
+  },
+  {
+    name: "James O'Brien",
+    designation: 'Engineering Manager · Atlas',
+    profile: '/avatar-images/avatar-03.jpg',
+    title: 'Connected in twenty minutes',
+    content:
+      "Plugged Folio into Postgres and BigQuery, granted read-only, and we had the first dashboard the same afternoon. Onboarding took less time than reading the docs would've.",
+  },
+  {
+    name: 'Yuki Tanaka',
+    designation: 'Product Designer · Beam Studio',
+    profile: '/avatar-images/avatar-05.jpg',
+    title: 'Adapts to our team',
+    content:
+      "What I appreciate is that Folio doesn't force one query language on us. PMs ask in English, analysts review the SQL, engineers wire the dashboard into our app. Same tool, three workflows, all coherent.",
+  },
+  {
+    name: 'Olivia Park',
+    designation: 'Growth Lead · Stride',
+    profile: '/avatar-images/avatar-01.jpg',
+    title: 'Decisions in minutes, not days',
+    content:
+      'Our growth experiments used to wait two days for the data team to write the lift query. Now I ask Folio, get the chart, get the explanation in plain English, and decide before standup ends. Cycle time on experiments dropped 70%.',
+  },
+  {
+    name: 'Rashid Mansour',
+    designation: 'Head of Product · Helmsley',
+    profile: '/avatar-images/avatar-04.jpg',
+    title: 'Our best executive surface',
+    content:
+      "The 'explain this chart' AI is the underrated feature. Execs read the visualization and the one-sentence summary together. Board prep used to take a week of analyst time. Now it's a half-day.",
+  },
+  {
+    name: 'Emma Thornton',
+    designation: 'Founder · Nimbus',
+    profile: '/avatar-images/avatar-05.jpg',
+    title: 'Cancelled three tools',
+    content:
+      'Was paying $2.4K/mo for a BI stack that did half of what Folio does on its own. Cancelled everything, switched, and used the savings to hire a part-time analyst who actually spends her time on modeling.',
+  },
+  {
+    name: 'Anil Reddy',
+    designation: 'VP Engineering · Pinch',
+    profile: '/avatar-images/avatar-02.jpg',
+    title: 'AI explanations saved us hours',
+    content:
+      "The AI explanation layer is the underrated piece. Charts used to bounce back from stakeholders with 'what does this actually mean?' Now Folio drafts the takeaway alongside the visualization. Slack threads about charts went down to almost zero.",
   },
 ];
+
+function AddTestimonialPlaceholder() {
+  return (
+    <div
+      aria-hidden='true'
+      className='my-4 flex h-44 break-inside-avoid items-center justify-center rounded-3xl border-2 border-border border-dashed bg-transparent'
+    >
+      <Plus className='size-7 text-muted-foreground/40' />
+    </div>
+  );
+}
 
 export default function Testimonials() {
   return (
@@ -62,10 +129,11 @@ export default function Testimonials() {
           </p>
         </div>
 
-        <div className='mt-14 columns-1 gap-6 md:columns-2 lg:columns-3'>
+        <div className='mt-14 columns-1 gap-6 md:columns-2 lg:columns-4'>
           {testimonials.map((t) => (
             <TestimonialCard key={t.name} testimonial={t} />
           ))}
+          <AddTestimonialPlaceholder />
         </div>
       </div>
     </section>
