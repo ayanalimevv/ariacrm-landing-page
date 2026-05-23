@@ -48,7 +48,7 @@ export function HeroHeader() {
                 aria-label='Folio home'
                 className='flex items-center gap-2'
               >
-                <Logo />
+                <Logo className='size-8' />
                 <span className='font-semibold text-foreground text-sm'>
                   Folio
                 </span>

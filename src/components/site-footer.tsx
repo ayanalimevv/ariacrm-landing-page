@@ -205,7 +205,7 @@ export function SiteFooter() {
             {/* Brand */}
             <div className='sm:col-span-2 md:col-span-4'>
               <div className='flex items-center gap-2'>
-                <Logo className='size-9' />
+                <Logo className='size-11' />
                 <span className='font-bold text-foreground text-xl'>Folio</span>
               </div>
               <p className='mt-5 max-w-xs text-muted-foreground text-sm leading-relaxed'>
