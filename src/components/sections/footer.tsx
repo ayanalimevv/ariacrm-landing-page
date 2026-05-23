@@ -140,7 +140,7 @@ export function Footer() {
             &copy; {new Date().getFullYear()} {owner}. All rights reserved.
           </p>
           <p className='text-muted-foreground text-sm'>
-            Automate smarter with AI workflows.
+            Making data intelligence accessible.
           </p>
         </div>
       </div>

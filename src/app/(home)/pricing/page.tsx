@@ -16,7 +16,7 @@ export default function PricingPage() {
                 Pricing that scales with you
               </h1>
               <p className="text-muted-foreground mx-auto mt-6 max-w-xl text-balance text-lg">
-                Start free with 100 workflow executions. Upgrade as your automation needs grow.
+                Start free with 100 queries a month. Upgrade as your team&apos;s data needs grow.
               </p>
             </div>
           </div>

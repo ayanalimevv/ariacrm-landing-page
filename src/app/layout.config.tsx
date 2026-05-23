@@ -4,7 +4,7 @@ import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
 
 export const title = 'Folio';
 export const description =
-  'Automate your workflows with AI. Connect your favorite tools, build intelligent automations, and let AI handle the repetitive work.';
+  'Folio is the AI workspace for your data. Connect any warehouse, ask questions in plain English, and ship dashboards your team actually opens — no SQL required.';
 export const owner = 'Folio';
 
 export const baseOptions: BaseLayoutProps = {
