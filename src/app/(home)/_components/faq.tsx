@@ -1,8 +1,6 @@
 'use client';
 
-import { LifeBuoy, Palette, Sparkles } from 'lucide-react';
 import Link from 'next/link';
-import type { ComponentType } from 'react';
 import { useEffect, useState } from 'react';
 
 import {
@@ -18,7 +16,6 @@ type FAQItem = { question: string; answer: string };
 type FAQGroup = {
   id: string;
   label: string;
-  icon: ComponentType<{ className?: string }>;
   items: FAQItem[];
 };
 
@@ -26,71 +23,68 @@ const faqGroups: FAQGroup[] = [
   {
     id: 'general',
     label: 'General',
-    icon: Sparkles,
     items: [
       {
-        question: 'What is Ruixen UI?',
+        question: 'What is Folio?',
         answer:
-          'Ruixen UI is a modern, fully responsive design system that provides pre-built components, utilities, and layouts to help developers build scalable web applications quickly and efficiently.',
+          'Folio is an AI-powered data workspace that lets teams query databases, build dashboards, and share insights in plain English — no SQL required. Connect your warehouse and start asking questions in minutes.',
       },
       {
-        question: 'Which platforms does Ruixen UI support?',
+        question: 'Which databases does Folio support?',
         answer:
-          'Ruixen UI is built for web applications and works seamlessly with React, Next.js, and other modern JavaScript frameworks. It also supports dark mode and responsive layouts out of the box.',
+          'Folio connects to Postgres, MySQL, Snowflake, BigQuery, Redshift, and most popular warehouses out of the box. We also support CSV uploads and read-only views into production data with column-level permissions.',
       },
       {
-        question: 'Is Ruixen UI free to use?',
+        question: 'Is my data sent to a third-party AI provider?',
         answer:
-          'Ruixen UI is open and free to use in personal and commercial projects. Premium blocks and templates are available for teams that want a faster head start.',
+          'Folio uses AI to generate SQL, but your query results and underlying tables stay in your warehouse. Only schema metadata is sent for context — never row-level data. Enterprise plans include a private model deployment option.',
       },
       {
         question: 'How do I get started?',
         answer:
-          'Install the package, copy the components you need into your project, and start composing. Our quickstart guide walks you through setup with React, Next.js, and Tailwind CSS in minutes.',
+          'Sign up, connect your warehouse with read-only credentials, and ask your first question. Most teams have a useful dashboard live within an hour.',
       },
     ],
   },
   {
     id: 'customization',
     label: 'Customization',
-    icon: Palette,
     items: [
       {
-        question: 'Can I customize Ruixen UI components?',
+        question: 'Can I edit the SQL Folio generates?',
         answer:
-          'Yes — every component is fully customizable via props, CSS classes, and theme tokens. You can adapt colors, spacing, typography, and layout to match your brand without forking the source.',
+          'Yes — every generated query is editable, version-controlled, and reviewable. Analysts can refine the SQL before saving it as a reusable view, and the AI learns from edits to improve future suggestions.',
       },
       {
-        question: 'Does Ruixen UI support dark mode and theming?',
+        question: 'Does Folio support our team’s semantic layer?',
         answer:
-          'Dark mode is supported out of the box, and our theme tokens make it easy to define light, dark, or fully bespoke palettes that flow through every component automatically.',
+          'Folio reads dbt models, Cube definitions, and LookML if you’ve already invested in a semantic layer. If you haven’t, the AI builds one as you go — every saved query becomes a reusable concept.',
       },
       {
-        question: 'Are Ruixen UI components accessible?',
+        question: 'Can I theme dashboards to match our brand?',
         answer:
-          'Components ship with sensible ARIA attributes, keyboard interactions, and focus management built-in, so accessibility is the default rather than an afterthought.',
+          'Dashboards support custom palettes, logo placement, and exportable themes. Embed them in your app, share them publicly, or pin them to a Slack channel with a single URL.',
       },
     ],
   },
   {
     id: 'support',
     label: 'Support',
-    icon: LifeBuoy,
     items: [
       {
         question: 'Is there documentation and support available?',
         answer:
-          'Yes — Ruixen UI ships with comprehensive documentation, live examples, and tutorials. Our community and support channels are also available to help you implement components and resolve issues.',
+          'Yes — Folio ships with comprehensive docs, query examples for common schemas, and tutorials. Pro plans include a dedicated Slack channel with our team; Enterprise gets a named solutions engineer.',
       },
       {
-        question: 'Does Ruixen UI integrate with third-party tools?',
+        question: 'Does Folio integrate with our existing tools?',
         answer:
-          'Absolutely. Ruixen UI includes ready-to-use integrations and patterns for popular tools and services, making it easier to wire up analytics, authentication, and workflow platforms.',
+          'Folio integrates with Slack, Notion, Linear, GitHub, and most BI exporters. Pin a chart to a Slack channel, embed it in Notion, or post a query result on a Linear ticket — pick the surface your team already uses.',
       },
       {
         question: 'How can I report bugs or request features?',
         answer:
-          'You can open an issue on our GitHub repository or reach out to our support team directly. We triage bugs quickly and welcome thoughtful feature requests from the community.',
+          'Open an issue on our GitHub or reach out in our community channel. We triage bugs quickly and ship a fresh release roughly every two weeks.',
       },
     ],
   },
@@ -126,7 +120,7 @@ export default function FAQs() {
         <div className='grid items-end gap-8 md:grid-cols-2 md:gap-12'>
           <h2 className='font-semibold text-4xl text-foreground'>FAQs</h2>
           <p className='max-w-md text-balance text-lg text-muted-foreground'>
-            Everything you need to know about Ruixen UI. Can&apos;t find what
+            Everything you need to know about Folio. Can&apos;t find what
             you&apos;re looking for? Reach out to our{' '}
             <Link
               href='#'
@@ -141,33 +135,31 @@ export default function FAQs() {
         <div className='@container mt-6 grid md:mt-20 md:grid-cols-5'>
           <nav
             aria-label='FAQ categories'
-            className='sticky top-0 z-10 h-fit max-md:flex max-md:justify-center max-md:bg-foreground/2 max-md:p-2 max-md:backdrop-blur md:-mt-3 md:top-12 md:col-span-2 md:block'
+            className='md:-mt-3 sticky top-0 z-10 h-fit max-md:flex max-md:justify-center max-md:bg-foreground/2 max-md:p-2 max-md:backdrop-blur md:top-12 md:col-span-2 md:block'
           >
             {faqGroups.map((group) => {
-              const Icon = group.icon;
               const isActive = activeId === group.id;
               return (
-                <a
+                <button
                   key={group.id}
-                  href={`#${group.id}`}
-                  data-state={isActive ? 'active' : 'inactive'}
-                  className='group text-muted-foreground max-md:px-1 md:block md:py-1'
-                  onClick={() => setActiveId(group.id)}
+                  type='button'
+                  aria-current={isActive ? 'true' : undefined}
+                  className={cn(
+                    'block w-fit cursor-pointer py-2 text-left text-sm transition-colors max-md:px-2 md:py-1.5',
+                    isActive
+                      ? 'font-medium text-foreground'
+                      : 'text-muted-foreground hover:text-foreground',
+                  )}
+                  onClick={() => {
+                    setActiveId(group.id);
+                    document.getElementById(group.id)?.scrollIntoView({
+                      behavior: 'smooth',
+                      block: 'start',
+                    });
+                  }}
                 >
-                  <span
-                    className={cn(
-                      '@max-xs:px-4 flex w-fit items-center gap-2 rounded-md px-3 py-1.5 text-sm transition-colors [&>svg]:size-4',
-                      isActive
-                        ? 'bg-card font-medium text-primary shadow-sm ring-1 ring-foreground/5'
-                        : 'group-hover:bg-foreground/5 hover:text-foreground',
-                    )}
-                  >
-                    <Icon />
-                    <span className='@max-xs:in-data-[state=inactive]:hidden'>
-                      {group.label}
-                    </span>
-                  </span>
-                </a>
+                  {group.label}
+                </button>
               );
             })}
           </nav>
@@ -178,7 +170,7 @@ export default function FAQs() {
                 key={group.id}
                 id={group.id}
                 data-faq-group={group.id}
-                className='space-y-4 scroll-mt-20'
+                className='scroll-mt-20 space-y-4'
               >
                 <h3 className='pl-6 font-semibold text-foreground text-lg'>
                   {group.label}
@@ -195,7 +187,7 @@ export default function FAQs() {
                     <AccordionItem
                       key={`${group.id}-${index}`}
                       value={`${group.id}-${index}`}
-                      className='peer rounded-xl border-none px-6 py-1 data-[state=open]:border-none data-[state=open]:bg-card data-[state=open]:shadow-sm data-[state=open]:shadow-black/[0.065] data-[state=open]:ring-1 data-[state=open]:ring-border'
+                      className='peer rounded-xl border-none px-6 py-1 data-[state=open]:border-none data-[state=open]:bg-card data-[state=open]:shadow-black/[0.065] data-[state=open]:shadow-sm data-[state=open]:ring-1 data-[state=open]:ring-border'
                     >
                       <AccordionTrigger className='cursor-pointer rounded-none border-b py-4 text-base transition-none hover:no-underline data-[state=open]:border-transparent'>
                         {item.question}
