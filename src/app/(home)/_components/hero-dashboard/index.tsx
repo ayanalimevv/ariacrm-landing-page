@@ -1,5 +1,7 @@
 'use client';
 
+import { Logo } from '@/components/logo';
+
 import { DataModelContent } from './data-model-content';
 import { DashboardSidebar } from './sidebar';
 
@@ -29,11 +31,7 @@ function DashboardCard() {
 function WorkspaceHeader() {
   return (
     <div className='hidden items-center gap-3 border-border border-r border-b bg-card pr-4 pl-3 lg:flex lg:h-12'>
-      <img
-        src='/logo.png'
-        alt='Folio'
-        className='h-6 w-auto shrink-0 object-contain'
-      />
+      <Logo className='size-6 shrink-0' />
       <div className='flex h-full flex-1 items-center gap-1'>
         <span className='font-semibold text-foreground text-sm leading-5 tracking-[-0.16px]'>
           Folio

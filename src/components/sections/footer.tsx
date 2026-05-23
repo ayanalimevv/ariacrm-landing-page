@@ -1,14 +1,10 @@
-import {
-  owner,
-  title,
-  description,
-} from '@/app/layout.config';
+import { description, owner } from '@/app/layout.config';
 import { InlineLink } from '@/components/inline-link';
+import { Logo } from '@/components/logo';
 import { cn } from '@/lib/utils';
-import { ActiveLink } from '../active-link';
-import { FaXTwitter, FaLinkedinIn, FaGithub } from 'react-icons/fa6';
+import { FaGithub, FaLinkedinIn, FaXTwitter } from 'react-icons/fa6';
 import { HiOutlineMail } from 'react-icons/hi';
-import Image from 'next/image';
+import { ActiveLink } from '../active-link';
 
 export function Footer() {
   return (
@@ -21,31 +17,37 @@ export function Footer() {
     >
       {/* Top Section - Brand and Social */}
       <div className='grid gap-8 lg:grid-cols-2'>
-        <div className='flex flex-col gap-4 items-start'>
-          <div className="flex items-center gap-2.5">
-            <Image
-              src="/logo.png"
-              alt="Vertex Logo"
-              width={200}
-              height={60}
-              className="h-12 w-auto object-contain"
-            />
-            <span className="text-xl font-semibold text-foreground">Vertex</span>
+        <div className='flex flex-col items-start gap-4'>
+          <div className='flex items-center gap-2.5'>
+            <Logo className='size-12' />
+            <span className='font-semibold text-foreground text-xl'>Folio</span>
           </div>
           <p className='max-w-md text-muted-foreground text-sm'>
             {description}
           </p>
-          <div className='flex gap-4 mt-2'>
-            <InlineLink href='https://twitter.com' className='text-muted-foreground hover:text-foreground transition-colors'>
+          <div className='mt-2 flex gap-4'>
+            <InlineLink
+              href='https://twitter.com'
+              className='text-muted-foreground transition-colors hover:text-foreground'
+            >
               <FaXTwitter className='size-5' />
             </InlineLink>
-            <InlineLink href='https://linkedin.com' className='text-muted-foreground hover:text-foreground transition-colors'>
+            <InlineLink
+              href='https://linkedin.com'
+              className='text-muted-foreground transition-colors hover:text-foreground'
+            >
               <FaLinkedinIn className='size-5' />
             </InlineLink>
-            <InlineLink href='https://github.com' className='text-muted-foreground hover:text-foreground transition-colors'>
+            <InlineLink
+              href='https://github.com'
+              className='text-muted-foreground transition-colors hover:text-foreground'
+            >
               <FaGithub className='size-5' />
             </InlineLink>
-            <InlineLink href='mailto:hello@vertex.ai' className='text-muted-foreground hover:text-foreground transition-colors'>
+            <InlineLink
+              href='mailto:hello@vertex.ai'
+              className='text-muted-foreground transition-colors hover:text-foreground'
+            >
               <HiOutlineMail className='size-5' />
             </InlineLink>
           </div>
@@ -132,7 +134,7 @@ export function Footer() {
       </div>
 
       {/* Bottom Section - Copyright */}
-      <div className='border-t border-border border-dashed pt-8'>
+      <div className='border-border border-t border-dashed pt-8'>
         <div className='flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between'>
           <p className='text-muted-foreground text-sm'>
             &copy; {new Date().getFullYear()} {owner}. All rights reserved.

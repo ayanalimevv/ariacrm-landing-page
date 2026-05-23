@@ -1,5 +1,7 @@
 import Link from 'fumadocs-core/link';
-import Image from 'next/image';
+
+import { Logo } from '@/components/logo';
+import { ThemeToggle } from '@/components/theme-toggle';
 import {
   LanguageToggle,
   LanguageToggleText,
@@ -19,7 +21,6 @@ import {
 import type { LinkItemType } from 'fumadocs-ui/layouts/links';
 import { SearchOnly } from 'fumadocs-ui/provider';
 import { ChevronDown, Languages } from 'lucide-react';
-import { ThemeToggle } from '@/components/theme-toggle';
 import { Menu, MenuContent, MenuLinkItem, MenuTrigger } from './menu';
 import { Navbar, NavbarMenuLink } from './navbar';
 
@@ -43,16 +44,8 @@ export const Header = ({
         href={nav.url ?? '/'}
         className='inline-flex items-center gap-2.5 font-semibold'
       >
-        <Image
-          src="/logo.png"
-          alt="Vertex Logo"
-          width={200}
-          height={60}
-          priority
-          fetchPriority="high"
-          className="h-9 w-auto object-contain"
-        />
-        <span className="text-lg font-semibold text-foreground">Vertex</span>
+        <Logo className='size-9' />
+        <span className='font-semibold text-foreground text-lg'>Folio</span>
       </Link>
       {nav.children}
       <NavigationMenuList className='ml-2 flex flex-row items-center gap-2 max-sm:hidden'>
