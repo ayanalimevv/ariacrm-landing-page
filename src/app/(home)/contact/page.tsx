@@ -78,7 +78,7 @@ export default function ContactPage() {
               Get in Touch
             </h1>
             <p className='max-w-xs sm:max-w-md md:max-w-2xl text-center text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground leading-relaxed tracking-tight px-4 sm:px-0 animate-fade-in-up delay-200' style={{ opacity: 0 }}>
-              Have questions about workflow automation? Want to see a demo? Our team is here to help you get started.
+              Have questions about querying your data with AI? Want to see a demo? Our team is here to help you get started.
             </p>
           </div>
         </div>
@@ -197,7 +197,7 @@ export default function ContactPage() {
                 Let&apos;s Start a Conversation
               </h2>
               <p className='text-muted-foreground'>
-                Whether you&apos;re looking to automate workflows, connect your tools, or explore what AI automation can do for your business, we&apos;d love to hear from you.
+                Whether you&apos;re evaluating Folio for your data team, connecting a new warehouse, or exploring how AI can replace your SQL editor, we&apos;d love to hear from you.
               </p>
             </div>
 
@@ -225,13 +225,13 @@ export default function ContactPage() {
         <div className='relative z-10 mx-6 md:mx-16 border-l border-r border-border overflow-hidden'>
           <div className='grid gap-8 px-6 py-16 sm:grid-cols-2 md:py-20'>
             <h2 className='text-xl sm:text-2xl md:text-3xl font-medium text-foreground max-w-xl'>
-              Ready to Automate Your First Workflow?
+              Ready to ship your first dashboard?
             </h2>
 
             <div className='flex w-full items-center'>
               <div className='max-w-xl space-y-4'>
                 <p className='text-muted-foreground text-sm md:text-base'>
-                  Start building intelligent workflows today. No coding required - get up and running in minutes.
+                  Connect your warehouse, ask your first question, and get a chart back before the meeting ends. No SQL required.
                 </p>
                 <div className='flex flex-row gap-3'>
                   <Button size='lg' className='group gap-4' asChild>

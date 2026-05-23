@@ -12,14 +12,14 @@ export default function CTA(): React.ReactElement {
       <div className='relative z-10 px-6 sm:px-8 lg:px-12 py-20 md:py-28 lg:py-32'>
         <div className='grid gap-8 sm:grid-cols-2'>
           <h2 className='text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium text-foreground max-w-xl'>
-            Start Automating in Minutes
+            From question to dashboard in minutes
           </h2>
 
           <div className='flex w-full items-center'>
             <div className='max-w-xl space-y-4'>
               <p className='text-muted-foreground text-sm md:text-base'>
-                Join thousands of teams using Folio to automate workflows,
-                connect their tools, and let AI handle the repetitive work.
+                Join thousands of teams using Folio to query their warehouse,
+                ship dashboards, and answer data questions in plain English — no SQL required.
               </p>
               <div className='flex flex-row gap-3'>
                 <Button size='lg' className='group gap-4' asChild>
