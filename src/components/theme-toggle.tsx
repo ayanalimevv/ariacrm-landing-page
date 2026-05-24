@@ -37,8 +37,6 @@ const itemVariants = cva(
   },
 );
 
-type Theme = 'light' | 'dark' | 'system';
-
 export function ThemeToggle({
   className,
   mode = 'light-dark',
@@ -58,20 +56,6 @@ export function ThemeToggle({
     setMounted(true);
   }, []);
 
-  const handleChangeTheme = async (theme: Theme) => {
-    function update() {
-      setTheme(theme);
-    }
-
-    if (document.startViewTransition && theme !== resolvedTheme) {
-      document.documentElement.style.viewTransitionName = 'theme-transition';
-      await document.startViewTransition(update).finished;
-      document.documentElement.style.viewTransitionName = '';
-    } else {
-      update();
-    }
-  };
-
   const value = mounted
     ? mode === 'light-dark'
       ? resolvedTheme
@@ -83,7 +67,7 @@ export function ThemeToggle({
       className={container}
       onClick={() => {
         if (mode !== 'light-dark') return;
-        handleChangeTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
+        setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
       }}
       data-theme-toggle=''
       aria-label={mode === 'light-dark' ? 'Toggle Theme' : undefined}
@@ -100,7 +84,7 @@ export function ThemeToggle({
             className={itemVariants({ active: isActive })}
             onClick={() => {
               if (mode === 'light-dark') return;
-              handleChangeTheme(key as Theme);
+              setTheme(key);
             }}
             aria-label={label}
           >
