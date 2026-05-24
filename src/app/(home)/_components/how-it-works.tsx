@@ -92,8 +92,8 @@ function AskIllustration() {
       className='pointer-events-none relative flex h-40 w-full select-none items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-muted/20 via-blue-50/20 to-muted/20 dark:from-muted/10 dark:via-blue-950/10 dark:to-muted/10'
     >
       <div
-        className='relative flex flex-col items-center'
-        style={{ width: 270, height: 145 }}
+        className='relative flex w-full max-w-[270px] flex-col items-center'
+        style={{ height: 145 }}
       >
         {/* Card 1 — Wei Chen (widest, top, front) */}
         <div className='-translate-x-1/2 absolute top-0 left-1/2 z-[3] flex w-[265px] items-center gap-2 rounded-lg border border-border/40 bg-white px-2.5 py-2 shadow-lg dark:bg-card'>
@@ -253,7 +253,10 @@ function InsightsIllustration() {
       aria-hidden='true'
       className='pointer-events-none relative flex h-40 w-full select-none items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-muted/20 via-blue-50/20 to-muted/20 dark:from-muted/10 dark:via-blue-950/10 dark:to-muted/10'
     >
-      <div className='relative' style={{ width: 340, height: 160 }}>
+      <div
+        className='relative w-full max-w-[340px]'
+        style={{ height: 160 }}
+      >
         {/* Left card — Loom (full content, peeks out on left ~75px) */}
         <div className='absolute top-2.5 left-0 z-[1] w-[185px] rounded-xl border border-border/40 bg-white p-3 shadow-md dark:bg-card'>
           <div className='flex items-center justify-between'>
@@ -438,14 +441,14 @@ const STEPS: Step[] = [
 
 export default function HowItWorks() {
   return (
-    <section className='py-20 md:py-28'>
-      <div className='mx-auto max-w-7xl px-6 lg:px-8'>
+    <section className='py-16 sm:py-20 md:py-28'>
+      <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
         <p className='font-mono text-[11px] text-muted-foreground uppercase tracking-[0.2em]'>
           How it works
         </p>
 
-        <div className='mt-6 grid items-end gap-8 md:grid-cols-2 md:gap-12'>
-          <h2 className='text-balance font-bold text-4xl text-foreground tracking-tight md:text-5xl'>
+        <div className='mt-6 grid items-end gap-6 md:grid-cols-2 md:gap-12'>
+          <h2 className='text-balance font-bold text-3xl text-foreground tracking-tight sm:text-4xl md:text-5xl'>
             Everything around your data, in one workspace
           </h2>
           <p className='max-w-md text-base text-muted-foreground leading-relaxed'>
@@ -454,12 +457,12 @@ export default function HowItWorks() {
           </p>
         </div>
 
-        <div className='mx-auto mt-14 overflow-hidden rounded-2xl border border-transparent bg-card/50 shadow-black/5 shadow-md ring-1 ring-border'>
+        <div className='mx-auto mt-10 overflow-hidden rounded-2xl border border-transparent bg-card/50 shadow-black/5 shadow-md ring-1 ring-border sm:mt-14'>
           <div className='grid divide-border max-md:divide-y md:grid-cols-3 md:divide-x md:divide-y-0'>
             {STEPS.map((step) => (
               <div
                 key={step.title}
-                className='row-span-2 grid grid-rows-subgrid gap-8 p-8'
+                className='row-span-2 grid grid-rows-subgrid gap-6 p-6 sm:gap-8 sm:p-8'
               >
                 <div className={step.illustrationWrapperClass}>
                   {step.illustration}
