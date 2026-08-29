@@ -15,26 +15,27 @@ const Hero = () => {
             <div className='pt-24 pb-20 md:pt-32 lg:pt-40'>
               <div className='relative z-10 mx-auto grid max-w-5xl items-center gap-4 px-6 text-center'>
                 <AnimatedBadge
-                  text='Simplify Charts — Open Source'
+                  text='Now in early access — WhatsApp-native CRM'
                   href='#'
                   className='justify-self-center'
                 />
                 <h1 className='text-balance font-semibold text-4xl sm:text-5xl lg:text-6xl'>
-                  Making Data Intelligence Accessible
+                  Run your whole pipeline from WhatsApp
                 </h1>
                 <div className='mx-auto max-w-2xl'>
                   <p className='mb-6 text-balance text-lg text-muted-foreground lg:text-xl'>
-                    Folio builds AI-powered tools that help teams query
-                    databases, visualize data, and make faster decisions —
-                    without writing SQL.
+                    Aria turns the WhatsApp conversations your team is already
+                    having into contacts, companies, and deals. Nothing to copy
+                    into a spreadsheet. No lead stuck on someone’s personal
+                    phone.
                   </p>
                   <div className='flex items-center justify-center gap-3'>
                     <Button asChild className='shadow-md'>
-                      <Link href='/chatplotdb'>Explore ChatPlotDB</Link>
+                      <Link href='https://crm.realityrift.co'>Start free</Link>
                     </Button>
                     <Button variant='outline' asChild className='shadow-sm'>
                       <Link href='/contact' prefetch={false}>
-                        Get in Touch
+                        Book a demo
                       </Link>
                     </Button>
                   </div>

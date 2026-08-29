@@ -28,23 +28,23 @@ type Tab = {
 const TABS: Tab[] = [
   {
     id: 'ask',
-    title: 'Conversational AI',
-    description: 'Ask in plain English, get answers instantly',
+    title: 'One source of truth',
+    description: 'Keep companies, contacts, and customer data together.',
   },
   {
     id: 'reporting',
-    title: 'Reports & charts',
-    description: 'Built-in dashboards and revenue metrics',
+    title: 'Built for your workflow',
+    description: 'Customize views and fields around how your team works.',
   },
   {
     id: 'workflows',
-    title: 'Slack workflows',
-    description: 'Trigger queries straight from team chat',
+    title: 'Everything in context',
+    description: 'See customer activity, notes, and interactions in one place.',
   },
   {
     id: 'data-model',
-    title: 'Data modeling',
-    description: 'Map schemas and define relationships',
+    title: 'Less manual work',
+    description: 'Spend less time updating spreadsheets and more time building relationships.',
   },
 ];
 
@@ -63,9 +63,9 @@ const CONTENT_TITLES: Record<TabId, string> = {
 };
 
 const FOOTER_ITEMS = [
-  'Static spreadsheet exports',
-  'Modern data intelligence with AI',
-  'SQL-only editors and BI tools',
+  'No more scattered customer data',
+  'Simple, flexible CRM workflows',
+  'Everything your team needs, connected',
 ];
 
 /* -------------------------------------------------------------------------- */
@@ -347,11 +347,10 @@ export default function FeatureTabs() {
         {/* Heading */}
         <div className='grid items-end gap-8 md:grid-cols-2 md:gap-12'>
           <h2 className='text-balance font-bold text-4xl text-foreground tracking-tight md:text-5xl'>
-            Why teams prefer Folio to spreadsheets and SQL editors
+            Why teams choose Aria over spreadsheets
           </h2>
           <p className='max-w-md text-base text-muted-foreground leading-relaxed'>
-            Plain English over SQL, beautiful dashboards over CSV exports, and
-            AI that actually explains the chart — not just renders it.
+            Stop managing customer relationships across scattered spreadsheets and tools. Aria keeps your customer data, activity, and workflow connected in one place.
           </p>
         </div>
 

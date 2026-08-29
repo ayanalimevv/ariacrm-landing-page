@@ -25,45 +25,129 @@ const faqGroups: FAQGroup[] = [
     label: 'General',
     items: [
       {
-        question: 'What is Folio?',
+        question: 'What is Aria CRM?',
         answer:
-          'Folio is an AI-powered data workspace that lets teams query databases, build dashboards, and share insights in plain English — no SQL required. Connect your warehouse and start asking questions in minutes.',
+          'Aria is a flexible CRM that helps teams organize companies, contacts, customer data, and interactions in one place.',
       },
       {
-        question: 'Which databases does Folio support?',
+        question: 'Who is Aria CRM for?',
         answer:
-          'Folio connects to Postgres, MySQL, Snowflake, BigQuery, Redshift, and most popular warehouses out of the box. We also support CSV uploads and read-only views into production data with column-level permissions.',
+          'Aria is built for teams that want a simple, flexible way to manage customer relationships without relying on scattered spreadsheets.',
       },
       {
-        question: 'Is my data sent to a third-party AI provider?',
+        question: 'How is Aria different from a traditional CRM?',
         answer:
-          'Folio uses AI to generate SQL, but your query results and underlying tables stay in your warehouse. Only schema metadata is sent for context — never row-level data. Enterprise plans include a private model deployment option.',
+          'Aria focuses on keeping customer data simple, organized, and adaptable to the way your team actually works.',
       },
       {
-        question: 'How do I get started?',
+        question: 'Can I manage both companies and contacts in Aria?',
         answer:
-          'Sign up, connect your warehouse with read-only credentials, and ask your first question. Most teams have a useful dashboard live within an hour.',
+          'Yes. Aria lets you organize companies and contacts together so your team can easily understand and manage customer relationships.',
+      },
+      {
+        question: 'Can my whole team use Aria?',
+        answer:
+          'Yes. Aria is designed to give teams a shared workspace for managing and accessing customer information.',
       },
     ],
   },
   {
-    id: 'customization',
-    label: 'Customization',
+    id: 'data-organization',
+    label: 'Data & Organization',
     items: [
       {
-        question: 'Can I edit the SQL Folio generates?',
+        question: 'Can I customize Aria to fit my workflow?',
         answer:
-          'Yes — every generated query is editable, version-controlled, and reviewable. Analysts can refine the SQL before saving it as a reusable view, and the AI learns from edits to improve future suggestions.',
+          'Yes. Aria is designed to be flexible, allowing you to organize customer information around your team’s workflow.',
       },
       {
-        question: 'Does Folio support our team’s semantic layer?',
+        question: 'Can I create custom fields?',
         answer:
-          'Folio reads dbt models, Cube definitions, and LookML if you’ve already invested in a semantic layer. If you haven’t, the AI builds one as you go — every saved query becomes a reusable concept.',
+          'Yes. Custom fields help you capture the information that matters most to your business and your customer relationships.',
       },
       {
-        question: 'Can I theme dashboards to match our brand?',
+        question: 'Can I create custom views?',
         answer:
-          'Dashboards support custom palettes, logo placement, and exportable themes. Embed them in your app, share them publicly, or pin them to a Slack channel with a single URL.',
+          'Yes. Create views that help your team focus on the companies, contacts, and information that matter most.',
+      },
+      {
+        question: 'Can I search and filter my customer data?',
+        answer:
+          'Yes. Search and filtering make it easier to quickly find the customers and information you need.',
+      },
+      {
+        question: 'Can I keep customer activity and information together?',
+        answer:
+          'Yes. Aria keeps customer information and relevant activity connected, giving your team more context when working with customers.',
+      },
+    ],
+  },
+  {
+    id: 'integrations',
+    label: 'Integrations',
+    items: [
+      {
+        question: 'Does Aria integrate with the tools my team already uses?',
+        answer:
+          'Aria is designed to fit into your existing workflow. Available integrations depend on the tools supported by your Aria setup.',
+      },
+      {
+        question: 'Can I import existing customer data into Aria?',
+        answer:
+          'You can bring your existing customer information into Aria, making it easier to move away from scattered spreadsheets and legacy workflows.',
+      },
+      {
+        question: 'Can Aria replace our customer spreadsheets?',
+        answer:
+          'Aria gives your team a structured place to manage customer data, reducing the need to maintain multiple spreadsheets and duplicate records.',
+      },
+    ],
+  },
+  {
+    id: 'teams-workflow',
+    label: 'Teams & Workflow',
+    items: [
+      {
+        question: 'Can Aria support different team workflows?',
+        answer:
+          'Yes. Aria’s flexible structure lets teams organize information and views around the way they work.',
+      },
+      {
+        question: 'How does Aria help keep the team aligned?',
+        answer:
+          'With customer information in one shared workspace, everyone can work from the same data and stay up to date.',
+      },
+      {
+        question: 'Can I use Aria for sales and customer management?',
+        answer:
+          'Yes. Aria can be used to organize customer information, track relationships, and give sales and customer-facing teams the context they need.',
+      },
+    ],
+  },
+  {
+    id: 'security',
+    label: 'Security',
+    items: [
+      {
+        question: 'How is my customer data protected?',
+        answer:
+          'Aria is built with data security in mind. Your specific security controls and policies depend on your Aria environment and plan.',
+      },
+    ],
+  },
+  {
+    id: 'getting-started',
+    label: 'Getting Started',
+    items: [
+      {
+        question: 'How do I get started with Aria?',
+        answer:
+          'Getting started is simple: bring in your customer data, customize your workspace, and start managing your relationships in Aria.',
+      },
+      {
+        question: 'Do I need technical knowledge to use Aria?',
+        answer:
+          'No. Aria is designed to be approachable for teams that want to manage customer data without needing advanced technical or database skills.',
       },
     ],
   },
@@ -72,19 +156,9 @@ const faqGroups: FAQGroup[] = [
     label: 'Support',
     items: [
       {
-        question: 'Is there documentation and support available?',
+        question: 'Is support available if I need help?',
         answer:
-          'Yes — Folio ships with comprehensive docs, query examples for common schemas, and tutorials. Pro plans include a dedicated Slack channel with our team; Enterprise gets a named solutions engineer.',
-      },
-      {
-        question: 'Does Folio integrate with our existing tools?',
-        answer:
-          'Folio integrates with Slack, Notion, Linear, GitHub, and most BI exporters. Pin a chart to a Slack channel, embed it in Notion, or post a query result on a Linear ticket — pick the surface your team already uses.',
-      },
-      {
-        question: 'How can I report bugs or request features?',
-        answer:
-          'Open an issue on our GitHub or reach out in our community channel. We triage bugs quickly and ship a fresh release roughly every two weeks.',
+          'Yes. If you need help getting started or using Aria, you can reach out to the Aria team for assistance.',
       },
     ],
   },

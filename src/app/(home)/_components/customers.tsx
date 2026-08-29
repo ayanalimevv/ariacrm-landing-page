@@ -24,7 +24,7 @@ interface Logo {
   dark: StaticImageData;
 }
 
-// Define logo sets - each set contains unique logos that display together
+// Define logo sets - each set contains unique logos that display together.
 const logoSets: Logo[][] = [
   // Set 1
   [

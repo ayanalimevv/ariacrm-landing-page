@@ -417,23 +417,23 @@ type Step = {
 
 const STEPS: Step[] = [
   {
-    title: 'Stay in the loop',
+    title: 'Know your customers',
     description:
-      'A live activity feed of every query, chart, and dashboard your team ships — see what just changed at a glance.',
+      'Companies, contacts, and everything you know about them, organized in one place. Find what you need without digging through spreadsheets.',
     illustration: <AskIllustration />,
     illustrationWrapperClass: 'w-full self-center',
   },
   {
-    title: 'Plug into your stack',
+    title: 'Keep every interaction connected',
     description:
-      'Slack, Loom, Notion, and more — toggle the integrations your team already lives in and Folio fits right in.',
+      'Every WhatsApp message, call, and note sits alongside the customer it belongs to. Nothing important gets lost between conversations.',
     illustration: <InsightsIllustration />,
     illustrationWrapperClass: 'self-center',
   },
   {
-    title: 'Let AI draft the next step',
+    title: 'Turn information into action',
     description:
-      'Ask Folio to write summaries, emails, and follow-ups grounded in your data — review, polish, send.',
+      'Your team gets the context to follow up, move deals forward, and build stronger relationships. Nobody has to ask where a deal stands.',
     illustration: <ShareIllustration />,
     illustrationWrapperClass: 'mx-auto w-full self-center',
   },
@@ -449,11 +449,10 @@ export default function HowItWorks() {
 
         <div className='mt-6 grid items-end gap-6 md:grid-cols-2 md:gap-12'>
           <h2 className='text-balance font-bold text-3xl text-foreground tracking-tight sm:text-4xl md:text-5xl'>
-            Everything around your data, in one workspace
+            Your entire customer workflow, in one place
           </h2>
           <p className='max-w-md text-base text-muted-foreground leading-relaxed'>
-            Real-time activity, the integrations your team uses, and AI that
-            drafts the next step — Folio is more than just queries.
+            Keep customer data, relationships, activities, and conversations connected — so your team always knows what’s happening and what to do next.
           </p>
         </div>
 

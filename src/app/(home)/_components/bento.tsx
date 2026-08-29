@@ -528,8 +528,8 @@ function WorkflowAutomation() {
 function WorkflowAutomationCard() {
   return (
     <FeatureCard
-      title='Data automations'
-      description='Build multi-step automations that route every metric to exactly the right place. Chain triggers, conditions, and connected tools like Slack — then watch each branch update in real time as data flows through your pipeline.'
+      title='Your workflow, your views'
+      description='Shape Aria around how your team works. Search, filter, and sort without digging through spreadsheets.'
       className='lg:col-span-2'
     >
       <WorkflowAutomation />
@@ -544,8 +544,8 @@ function WorkflowAutomationCard() {
 function GuestFeedbackCard() {
   return (
     <FeatureCard
-      title='Connect anywhere'
-      description='Plug in Postgres, Snowflake, BigQuery, MySQL, or CSVs — Folio reads your schema and starts answering questions in minutes, with read-only credentials.'
+      title='One source of truth'
+      description='Keep everyone working from the same customer data.'
     >
       <div className='absolute inset-0 flex flex-col items-center justify-center pb-28'>
         {/* Top icon — Google Meet */}
@@ -602,63 +602,63 @@ const PRODUCT_CARD_ITEMS: {
   scale: number;
   opacity: number;
 }[] = [
-  {
-    text: 'Build executive dashboard',
-    color: 'gray',
-    ty: -414,
-    scale: 0.6,
-    opacity: 0,
-  },
-  {
-    text: 'Forecast Q2 revenue',
-    color: 'red',
-    ty: -354.5,
-    scale: 0.7,
-    opacity: 0.25,
-  },
-  {
-    text: 'Find churn risk customers',
-    color: 'yellow',
-    ty: -268,
-    scale: 0.8,
-    opacity: 0.5,
-  },
-  {
-    text: 'Compare regional sales',
-    color: 'blue',
-    ty: -163.5,
-    scale: 0.9,
-    opacity: 0.75,
-  },
-  {
-    text: 'Top 10 products by revenue',
-    color: 'green',
-    ty: -50,
-    scale: 1,
-    opacity: 1,
-  },
-  {
-    text: 'Track signup funnel drop-off',
-    color: 'purple',
-    ty: 63.5,
-    scale: 0.9,
-    opacity: 0.75,
-  },
-  {
-    text: 'Detect order anomalies',
-    color: 'pink',
-    ty: 168,
-    scale: 0.8,
-    opacity: 0.5,
-  },
-  {
-    text: 'Audit data quality issues',
-    color: 'green',
-    ty: 254.5,
-    scale: 0.7,
-    opacity: 0.25,
-  },
-];
+    {
+      text: 'Build executive dashboard',
+      color: 'gray',
+      ty: -414,
+      scale: 0.6,
+      opacity: 0,
+    },
+    {
+      text: 'Forecast Q2 revenue',
+      color: 'red',
+      ty: -354.5,
+      scale: 0.7,
+      opacity: 0.25,
+    },
+    {
+      text: 'Find churn risk customers',
+      color: 'yellow',
+      ty: -268,
+      scale: 0.8,
+      opacity: 0.5,
+    },
+    {
+      text: 'Compare regional sales',
+      color: 'blue',
+      ty: -163.5,
+      scale: 0.9,
+      opacity: 0.75,
+    },
+    {
+      text: 'Top 10 products by revenue',
+      color: 'green',
+      ty: -50,
+      scale: 1,
+      opacity: 1,
+    },
+    {
+      text: 'Track signup funnel drop-off',
+      color: 'purple',
+      ty: 63.5,
+      scale: 0.9,
+      opacity: 0.75,
+    },
+    {
+      text: 'Detect order anomalies',
+      color: 'pink',
+      ty: 168,
+      scale: 0.8,
+      opacity: 0.5,
+    },
+    {
+      text: 'Audit data quality issues',
+      color: 'green',
+      ty: 254.5,
+      scale: 0.7,
+      opacity: 0.25,
+    },
+  ];
 
 function ProductCardCarousel() {
   const pillShadow =
@@ -774,8 +774,8 @@ function ProductCardCarousel() {
 function ProductCardCarouselCard() {
   return (
     <FeatureCard
-      title='Suggested queries'
-      description='Pre-built query templates for dashboards, forecasting, and anomaly detection — start exploring with one click.'
+      title='Companies, organized'
+      description='Everything about your accounts, right where you need it.'
     >
       <ProductCardCarousel />
     </FeatureCard>
@@ -789,8 +789,8 @@ function ProductCardCarouselCard() {
 function WebSearchChatCard() {
   return (
     <FeatureCard
-      title='Web Search Chat'
-      description='Ask anything and watch the assistant search the web, cite sources, and stream a clean answer in real time.'
+      title='Every interaction, connected'
+      description='Keep customer history and activity in context.'
     >
       <div
         className='pointer-events-none relative flex h-full w-full select-none items-center justify-center overflow-hidden bg-background p-8'
@@ -876,8 +876,8 @@ function WebSearchChatCard() {
 function WorkflowTimelineCard() {
   return (
     <FeatureCard
-      title='Activity timeline'
-      description='Every query, every chart pinned, every dashboard update in a clean vertical timeline — so the team always knows what just shipped.'
+      title='Know what’s next'
+      description='Stay on top of relationships and follow-ups as they happen.'
     >
       <div className='pointer-events-none relative flex h-full w-full select-none items-center justify-center overflow-hidden bg-background p-4'>
         <svg
@@ -1034,11 +1034,10 @@ export default function Bento() {
       <div className='mx-auto max-w-7xl px-6 lg:px-8'>
         <div className='grid items-end gap-8 md:grid-cols-2 md:gap-12'>
           <h2 className='text-balance font-bold text-4xl text-foreground tracking-tight md:text-5xl'>
-            Every angle of your data, in one workspace
+            Everything you need to manage customer relationships
           </h2>
           <p className='max-w-md text-base text-muted-foreground leading-relaxed'>
-            Connect your warehouse, ask in plain English, and ship dashboards
-            your team will actually open — no SQL, no setup calls.
+            Keep your companies, contacts, conversations, and customer activity connected in one simple workspace.
           </p>
         </div>
 

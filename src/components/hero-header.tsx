@@ -50,7 +50,7 @@ export function HeroHeader() {
               >
                 <Logo className='size-8' />
                 <span className='font-semibold text-foreground text-sm'>
-                  Folio
+                  Aria CRM
                 </span>
               </Link>
 

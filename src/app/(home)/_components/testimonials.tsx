@@ -124,8 +124,7 @@ export default function Testimonials() {
             Loved by teams that ship fast
           </h2>
           <p className='max-w-md text-base text-muted-foreground leading-relaxed'>
-            From scrappy two-person teams to engineering orgs of 200,
-            here&apos;s what people say after they switch.
+            From growing startups to busy sales teams, Aria keeps customer data organized and everyone on the same page.
           </p>
         </div>
 

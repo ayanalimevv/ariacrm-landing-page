@@ -1,0 +1,41 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls:*)",
+      "Bash(npx tsc:*)",
+      "mcp__ide__getDiagnostics",
+      "Bash(npm run build:*)",
+      "Bash(find:*)",
+      "Bash(grep:*)",
+      "Bash(git init:*)",
+      "Bash(git remote add:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(git remote set-url:*)",
+      "Bash(cp /Users/srisomanaath/Desktop/simpliflyingai/folio.com/public/images/dashboard-bg.jpg '/Users/srisomanaath/Desktop/ruixen_ui/RUIXEN_PRODUCTS/prod-03 copy/public/images/dashboard-bg.jpg')",
+      "Bash(cp /Users/srisomanaath/Desktop/simpliflyingai/folio.com/public/images/slack.png '/Users/srisomanaath/Desktop/ruixen_ui/RUIXEN_PRODUCTS/prod-03 copy/public/images/slack.png')",
+      "Bash(cp /Users/srisomanaath/Desktop/simpliflyingai/folio.com/public/folio.svg '/Users/srisomanaath/Desktop/ruixen_ui/RUIXEN_PRODUCTS/prod-03 copy/public/folio.svg')",
+      "Bash(cp /Users/srisomanaath/Desktop/simpliflyingai/folio.com/src/components/ui/animated-badge.tsx '/Users/srisomanaath/Desktop/ruixen_ui/RUIXEN_PRODUCTS/prod-03 copy/src/components/ui/animated-badge.tsx')",
+      "Bash(cp -r '/Users/srisomanaath/Desktop/simpliflyingai/folio.com/src/app/\\(home\\)/_components/hero-dashboard' '/Users/srisomanaath/Desktop/ruixen_ui/RUIXEN_PRODUCTS/prod-03 copy/src/app/\\(home\\)/_components/hero-dashboard')",
+      "WebFetch(domain:ruixen.com)",
+      "Bash(curl -sL \"https://ruixen.com/r/auto-scrolling-client-carousel.json\")",
+      "Bash(curl -sL \"https://ruixen.com/r/auto-scrolling-client-carousel-demo.json\")",
+      "Bash(curl -sIL \"https://ruixen.com/logos/bitbucket.svg\")",
+      "Bash(curl -sIL \"https://www.ruixen.com/logos/bitbucket.svg\")",
+      "Bash(npx biome *)",
+      "Bash(git config *)",
+      "Read(//Users/srisomanaath/Desktop/ruixen_ui/RUIXEN_PRODUCTS/Simplifying AI /**)",
+      "Bash(git ls-remote *)",
+      "Bash(lsof -iTCP:3000 -sTCP:LISTEN -n -P)",
+      "Bash(curl -s http://localhost:3000/)",
+      "Bash(lsof -iTCP -sTCP:LISTEN -n -P)",
+      "Bash(curl -s http://localhost:3001/)",
+      "Bash(git rm *)",
+      "Bash(echo \"Non-path hits: $\\(curl -s http://localhost:3001/ 2>&1)",
+      "Bash(kill 26182 26188)",
+      "Bash(lsof -iTCP:3001 -sTCP:LISTEN)",
+      "Bash(xargs -I {} sh -c 'echo \"=== {} ===\"; grep -oE \"Loom|For \\(team|conducting\\)\" \"{}\" | head -3')"
+    ]
+  }
+}

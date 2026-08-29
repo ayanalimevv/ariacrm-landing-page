@@ -32,11 +32,11 @@ const footerColumns: FooterSection[][] = [
       title: 'Platform',
       links: [
         { label: 'Features', href: '#features' },
-        { label: 'Changelog', href: '#', badge: 'New' },
         { label: 'Pricing', href: '/pricing' },
         { label: 'Integrations', href: '#' },
+        { label: 'Changelog', href: '#', badge: 'New' },
+        { label: 'Security', href: '#' },
         { label: 'API', href: '#', external: true },
-        { label: 'Slack app', href: '#', external: true },
       ],
     },
     {
@@ -46,30 +46,29 @@ const footerColumns: FooterSection[][] = [
         { label: 'Blog', href: '#', badge: 'New' },
         { label: 'Careers', href: '#' },
         { label: 'Customers', href: '#' },
+        { label: 'Contact', href: '/contact' },
         { label: 'Press kit', href: '#' },
-        { label: 'Become a partner', href: '#' },
       ],
     },
   ],
   [
     {
-      title: 'Connect to',
+      title: 'Solutions',
       links: [
-        { label: 'Postgres', href: '#' },
-        { label: 'MySQL', href: '#' },
-        { label: 'Snowflake', href: '#' },
-        { label: 'BigQuery', href: '#' },
-        { label: 'Redshift', href: '#' },
-        { label: 'Databricks', href: '#' },
-        { label: 'CSV upload', href: '#' },
+        { label: 'Contact management', href: '#' },
+        { label: 'Company records', href: '#' },
+        { label: 'Custom fields', href: '#' },
+        { label: 'Custom views', href: '#' },
+        { label: 'Search and filters', href: '#' },
+        { label: 'Data import', href: '#' },
       ],
     },
     {
-      title: 'Folio for',
+      title: 'Aria for',
       links: [
-        { label: 'Data teams', href: '#' },
-        { label: 'Product teams', href: '#' },
-        { label: 'Engineering', href: '#' },
+        { label: 'Sales teams', href: '#' },
+        { label: 'Account management', href: '#' },
+        { label: 'Agencies', href: '#' },
         { label: 'Founders', href: '#' },
       ],
     },
@@ -78,16 +77,16 @@ const footerColumns: FooterSection[][] = [
     {
       title: 'Integrations',
       links: [
+        { label: 'Gmail', href: '#' },
+        { label: 'Outlook', href: '#' },
+        { label: 'Google Calendar', href: '#' },
+        { label: 'Google Contacts', href: '#' },
         { label: 'Slack', href: '#' },
-        { label: 'Notion', href: '#' },
-        { label: 'GitHub', href: '#' },
-        { label: 'Linear', href: '#' },
-        { label: 'Jira', href: '#' },
-        { label: 'dbt', href: '#' },
-        { label: 'Cube', href: '#' },
+        { label: 'WhatsApp', href: '#' },
         { label: 'Zapier', href: '#' },
         { label: 'Webhooks', href: '#' },
-        { label: 'Microsoft Teams', href: '#' },
+        { label: 'CSV import', href: '#' },
+        { label: 'REST API', href: '#' },
       ],
     },
   ],
@@ -100,20 +99,20 @@ const footerColumns: FooterSection[][] = [
         { label: 'API reference', href: '#', external: true },
         { label: 'System status', href: '#', external: true },
         { label: 'Tutorials', href: '#' },
-        { label: 'Query templates', href: '#', badge: 'New' },
+        { label: 'Import guide', href: '#', badge: 'New' },
         { label: 'Community', href: '#' },
       ],
     },
     {
       title: 'Compare',
       links: [
-        { label: 'vs Tableau', href: '#' },
-        { label: 'vs Looker', href: '#' },
-        { label: 'vs Metabase', href: '#' },
-        { label: 'vs Mode', href: '#' },
-        { label: 'vs Hex', href: '#' },
-        { label: 'vs Sigma', href: '#' },
-        { label: 'vs Power BI', href: '#' },
+        { label: 'vs Spreadsheets', href: '#' },
+        { label: 'vs HubSpot', href: '#' },
+        { label: 'vs Zoho CRM', href: '#' },
+        { label: 'vs Pipedrive', href: '#' },
+        { label: 'vs Salesforce', href: '#' },
+        { label: 'vs Airtable', href: '#' },
+        { label: 'vs Notion', href: '#' },
       ],
     },
   ],
@@ -184,17 +183,17 @@ export function SiteFooter() {
       {/* CTA */}
       <div className='relative px-6 pt-24 pb-32 text-center md:pt-32 md:pb-40 lg:px-8'>
         <h2 className='mx-auto max-w-3xl text-balance font-bold text-5xl text-foreground tracking-tight md:text-6xl lg:text-7xl'>
-          Stop waiting on the data team.
+          Bring your customer data together.
         </h2>
         <p className='mx-auto mt-6 max-w-xl text-balance text-base text-muted-foreground md:text-lg'>
-          Connect your warehouse, ask in plain English, and ship the chart
-          before the meeting ends.
+          Organize companies, contacts, and every interaction in one place your
+          whole team can work from.
         </p>
         <Button
           size='lg'
           className='mt-8 rounded-full px-6 py-5 font-medium text-sm'
         >
-          Try Folio Free
+          Get started
         </Button>
       </div>
 
@@ -206,19 +205,20 @@ export function SiteFooter() {
             <div className='sm:col-span-2 md:col-span-4'>
               <div className='flex items-center gap-2'>
                 <Logo className='size-11' />
-                <span className='font-bold text-foreground text-xl'>Folio</span>
+                <span className='font-bold text-foreground text-xl'>
+                  Aria CRM
+                </span>
               </div>
               <p className='mt-5 max-w-xs text-muted-foreground text-sm leading-relaxed'>
-                Folio is the AI-powered workspace that helps teams query
-                databases, visualize data, and make faster decisions — all in
-                one place.
+                Aria is a flexible CRM that helps teams organize companies,
+                contacts, and customer interactions in one place.
               </p>
               <a
-                href='mailto:hello@folio.app'
+                href='mailto:support@helloaria.io'
                 className='mt-6 inline-flex items-center gap-2 rounded-full border border-border bg-background px-3.5 py-1.5 font-medium text-foreground text-xs shadow-sm transition-shadow hover:shadow'
               >
                 <Mail className='size-3.5 text-muted-foreground' />
-                hello@folio.app
+                support@helloaria.io
               </a>
               <div className='mt-6 flex gap-2'>
                 {socials.map(({ Icon, label, href }) => (
@@ -255,7 +255,7 @@ export function SiteFooter() {
 
           <div className='flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between'>
             <span className='text-muted-foreground text-sm'>
-              © {new Date().getFullYear()} Folio. All rights reserved.
+              © {new Date().getFullYear()} Aria CRM. All rights reserved.
             </span>
             <div className='flex gap-6 text-sm'>
               <Link
